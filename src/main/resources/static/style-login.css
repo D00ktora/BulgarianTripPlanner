@@ -1,0 +1,275 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 10px 0 0;
+    background: url("https://www.pixelstalk.net/wp-content/uploads/images6/Road-Wallpaper-Desktop.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.wrapper-out {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 420px;
+    color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 30px 40px;
+    background: transparent; /*url("https://media.istockphoto.com/id/1171675830/photo/motorcycle-driver-riding-in-dolomite-pass-italy-europe.jpg?s=612x612&w=0&k=20&c=V0LxcYxRJxQ7wDVuGxMF_suUte5BKonn-a_EUyeNNQg=");
+    background-position: center;*/
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    overflow: hidden;
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: black;
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.wrapper h1 {
+    user-select: none;
+    color: black;
+    font-size: 36px;
+    text-align: center;
+    -webkit-text-stroke: .5px #ffffff;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    user-select: none;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: -15px 0 15px;
+    user-select: none;
+}
+
+.remember-forgot label input {
+    accent-color: white;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+    user-select: none;
+}
+
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.wrapper .register-link {
+    font-size: 15px;
+    text-align: center;
+    margin: 20px 0 15px;
+    user-select: none;
+}
+
+.register-link p a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+/* Create a right-aligned (split) link inside the navigation bar */
+.topNav .logo {
+    user-select: none;
+    padding: 0;
+    margin-left: 10px;
+    width: 65px;
+    float: left;
+    align-content: center;
+    color: white;
+}
+.topNav li {
+    user-select: none;
+    float: right;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+/* Create a top navigation bar with a black background color  */
+.topNav {
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.topNav li {
+    align-items: center;
+    padding: 0;
+    margin-top: 5px;
+}
+
+/* Style the links inside the navigation bar */
+.topNav a {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+/* Change the color of links on hover */
+.topNav a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    opacity: 1;
+}
+footer {
+    background-color: rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
+}
+.footerContainer {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.socialIcons {
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a {
+    text-decoration: none;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.socialIcons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+.socialIcons a:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: 0.2s;
+}
+.socialIcons a:hover i {
+    color: white;
+    transition: 0.2s;
+}
+.footerNav {
+    margin: 30px 0;
+}
+
+.footerNav ul {
+    display: flex;
+    justify-content: center;
+}
+
+.footerNav ul li a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.footerNav ul li a:hover {
+    opacity: 1;
+}
+
+.footerBott {
+    color: white;
+    opacity: 0.7;
+    padding: 0;
+    text-align: center;
+}
+
+.designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0 5px;
+}
+
+

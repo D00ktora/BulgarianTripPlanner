@@ -1,0 +1,167 @@
+html {
+    height: 100%;
+}
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 10px 0 0;
+    background: url("https://www.pixelstalk.net/wp-content/uploads/images6/Road-Wallpaper-Desktop.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+.topNav li button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    font-size: 25px;
+    background: none;
+    margin-right: 10px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 12px;
+    color: white;
+    opacity: 0.7;
+}
+.topNav li button:hover {
+    opacity: 1;
+}
+
+
+h1 {
+    user-select: none;
+    font-size: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: rgba(0, 0, 0, 0.69);
+    -webkit-text-stroke: 3px #ffffff;
+}
+/* Create a right-aligned (split) link inside the navigation bar */
+.topNav .logo {
+    user-select: none;
+    padding: 0;
+    margin-left: 10px;
+    width: 65px;
+    float: left;
+    align-content: center;
+    color: white;
+}
+.topNav li {
+    user-select: none;
+    float: right;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+/* Create a top navigation bar with a black background color  */
+.topNav {
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.topNav li {
+    align-items: center;
+    padding: 0;
+    margin-top: 5px;
+}
+
+/* Style the links inside the navigation bar */
+.topNav a {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+/* Change the color of links on hover */
+.topNav a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    opacity: 1;
+}
+footer {
+    background-color: rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
+}
+.footerContainer {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.socialIcons {
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a {
+    text-decoration: none;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.socialIcons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+.socialIcons a:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: 0.2s;
+}
+.socialIcons a:hover i {
+    color: white;
+    transition: 0.2s;
+}
+.footerNav {
+    margin: 30px 0;
+}
+
+.footerNav ul {
+    display: flex;
+    justify-content: center;
+}
+
+.footerNav ul li a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.footerNav ul li a:hover {
+    opacity: 1;
+}
+
+.footerBott {
+    color: white;
+    opacity: 0.7;
+    padding: 0;
+    text-align: center;
+}
+
+.designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0 5px;
+}
