@@ -1,167 +1,301 @@
-html {
-    height: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
-    padding: 0;
     margin: 0;
-    text-decoration: none;
-    list-style: none;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppyn', sans-serif;
 }
+
 body {
-    font-family: sans-serif;
-    padding: 0;
-    margin: 10px 0 0;
-    background: url("https://www.pixelstalk.net/wp-content/uploads/images6/Road-Wallpaper-Desktop.jpg") no-repeat center center fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("https://wallpaperaccess.com/full/526697.jpg");
     background-size: cover;
-}
-.topNav li button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
-    font-size: 25px;
-    background: none;
-    margin-right: 10px;
-    text-transform: uppercase;
-    border-radius: 10px;
-    padding: 12px;
-    color: white;
-    opacity: 0.7;
-}
-.topNav li button:hover {
-    opacity: 1;
+    background-position: center;
 }
 
-
-h1 {
-    user-select: none;
-    font-size: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    color: rgba(0, 0, 0, 0.69);
-    -webkit-text-stroke: 3px #ffffff;
-}
-/* Create a right-aligned (split) link inside the navigation bar */
-.topNav .logo {
-    user-select: none;
-    padding: 0;
-    margin-left: 10px;
-    width: 65px;
-    float: left;
-    align-content: center;
-    color: white;
-}
-.topNav li {
-    user-select: none;
-    float: right;
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-/* Create a top navigation bar with a black background color  */
-.topNav {
-    background-color: rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    border-radius: 20px;
-}
-
-.topNav li {
-    align-items: center;
-    padding: 0;
-    margin-top: 5px;
-}
-
-/* Style the links inside the navigation bar */
-.topNav a {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 16px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    opacity: 0.7;
-}
-
-/* Change the color of links on hover */
-.topNav a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    opacity: 1;
-}
-footer {
-    background-color: rgba(0, 0, 0, 0.25);
-    margin-bottom: 0;
-}
-.footerContainer {
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 0;
-    margin: 0;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
 }
-.socialIcons {
+
+.logo {
+    font-size: 2em;
+    color: white;
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover:after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation .btnRegister-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnRegister-popup:hover {
+    background: #ffffff;
+    color: #162938;
+}
+
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #ffffff;
+    color: #162938;
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
-}
-.socialIcons a {
-    text-decoration: none;
-    padding: 5px;
-    background-color: rgba(255, 255, 255, 0.25);
-    margin: 10px;
-    border-radius: 50%;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
 }
 
-.socialIcons a i {
+.wrapper.active-popup {
+    transform: scale(1);
+}
+
+.wrapper.active-popup-register {
+    transform: scale(1);
+}
+
+.wrapper.active {
+    height: 520px;
+}
+
+.wrapper.active-popup-register {
+    height: 520px;
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper.active .form-box.register {
+    transition: none;
+    transform: translateX(400px);
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active-popup-register .form-box.register {
+    transition: .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active-popup-register .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
     font-size: 2em;
-    color: black;
-    opacity: 0.9;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
 }
 
-.socialIcons a:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-    transition: 0.2s;
+.form-box h2 {
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
 }
-.socialIcons a:hover i {
-    color: white;
-    transition: 0.2s;
-}
-.footerNav {
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
     margin: 30px 0;
 }
 
-.footerNav ul {
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;line-height: 57px;
+}
+
+.remember-forgot {
+    font-size: .9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.footerNav ul li a {
-    color: white;
-    margin: 10px;
+.remember-forgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #162938;
     text-decoration: none;
-    font-size: 1.1em;
-    opacity: 0.7;
-    transition: 0.2s;
 }
 
-.footerNav ul li a:hover {
-    opacity: 1;
+.remember-forgot a:hover {
+    text-decoration: underline;
 }
 
-.footerBott {
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
     color: white;
-    opacity: 0.7;
-    padding: 0;
-    text-align: center;
+    font-weight: 500;
 }
 
-.designer {
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 400;
-    margin: 0 5px;
+.login-register {
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
 }

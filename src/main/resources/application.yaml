@@ -1,12 +1,10 @@
 spring:
-  application:
-    name: "Planner"
   datasource:
-    driver-class-name: "com.mysql.cj.jdbc.Driver"
-    url: "jdbc:mysql://localhost:8080/bulgaria-travel-planner?allowPublicKeyRetrieval=true"
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:8080/planner?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: 5400d4a9aaa
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
