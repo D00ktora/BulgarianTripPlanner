@@ -63,6 +63,8 @@ header {
     transform: scaleX(1);
 }
 
+.text-danger{color:#dc3545!important}
+
 .navigation .btnRegister-popup {
     width: 130px;
     height: 50px;

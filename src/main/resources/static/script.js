@@ -4,6 +4,12 @@ const registerLink = document.querySelector('.register-link');
 const btnLogin = document.querySelector('.btnLogin-popup');
 const btnRegister = document.querySelector('.btnRegister-popup');
 const iconClose = document.querySelector('.icon-close');
+const registerError = document.querySelector('.invalid-feedback')
+
+
+if (registerError.hasChildNodes()) {
+    wrapper.classList.add('active-popup-register');
+}
 
 registerLink.addEventListener('click', ()=> {
     wrapper.classList.add('active');
