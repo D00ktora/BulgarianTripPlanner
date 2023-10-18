@@ -19,36 +19,12 @@ public class HomeController {
     public HomeController(UserService userService) {
         this.userService = userService;
     }
-    @ModelAttribute("registerDTO")
-    public RegisterDTO initRegisterDTO() {
-        return new RegisterDTO();
-    }
-    @ModelAttribute("loginDTO")
-    public LoginDTO initLoginDTO() {
-        return new LoginDTO();
-    }
+
+
 
     @GetMapping("/")
     public String indexPage(HttpSession httpSession) {
         return "index";
     }
-    @PostMapping("/")
-    public String register(@Valid RegisterDTO registerDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors() || !userService.register(registerDTO)) {
-            redirectAttributes.addFlashAttribute("registerDTO", registerDTO);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
-            return "redirect:/";
-        }
-        return "redirect:/";
-    }
 
-    @PostMapping("/")
-    public String login(@Valid LoginDTO loginDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors() || !userService.login(loginDTO)) {
-            redirectAttributes.addFlashAttribute("loginDTO", loginDTO);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.loginDTO", loginDTO);
-            return "redirect:/";
-        }
-        return "redirect:/";
-    }
 }

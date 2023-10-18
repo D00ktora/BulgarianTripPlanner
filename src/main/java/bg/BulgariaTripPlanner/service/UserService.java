@@ -25,7 +25,7 @@ public class UserService {
         String encode = passwordEncoder.encode(registerDTO.getPassword());
         map.setPassword(encode);
         userRepository.save(map);
-        return false;
+        return true;
     }
 
     public boolean login(LoginDTO loginDTO) {
