@@ -12,5 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
-
+    @GetMapping("/users/profile")
+    private String userProfile() {
+        return "user-profile";
+    }
 }

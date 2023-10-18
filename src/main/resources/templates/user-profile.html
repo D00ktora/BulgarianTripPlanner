@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/user-profile.css">
+
+    <title>Home</title>
+</head>
+<body>
+<header th:replace="~{fragments/common::header}"></header>
+
+<div id="doc" class="yui-t2">
+    <div id="hd">
+        <div id="header" class="profile-header">
+            <h1>Profile</h1>
+        </div>
+
+    </div>
+    <div id="bd">
+        <div id="yui-main">
+            <div class="yui-b">
+                <div class="content">
+                    <div class="about"><h2>About</h2></div>
+                    <div class="row">
+                        <p class="naming">Full Name:</p>
+                        <p class="text-naming">Stilyan Petrov</p>
+                    </div>
+                    <div class="row">
+                        <div class="naming">Country</div>
+                        <div class="text-naming">Bulgaria</div>
+                    </div>
+                    <div class="row">
+                        <div class="naming">Address</div>
+                        <div class="text-naming">Ruse</div>
+                    </div>
+                    <div class="row">
+                        <div class="naming">Motorcycle</div>
+                        <div class="text-naming">Suzuki</div>
+                    </div>
+                    <div class="row">
+                        <div class="naming">Level</div>
+                        <div class="text-naming">1</div>
+                    </div>
+                    <div class="row">
+                        <div class="naming">Trips</div>
+                        <div class="text-naming">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui-b">
+            <div id="secondary">
+                <img src="#">
+                <h1>Nqkakvo si ime</h1>
+            </div>
+            <div id="secondary2">
+                <a href="#">EDIT PROFILE</a>
+                <a href="#">EDIT MOTORCYCLE</a>
+                <a href="#">CHANGE PASSWORD</a>
+                <a href="#">CHANGE EMAIL</a>
+            </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
