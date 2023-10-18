@@ -39,4 +39,8 @@ public class UserService {
         }
         return true;
     }
+    
+    public void logout() {
+        // TODO: 18.10.23 to be implemented 
+    }
 }
