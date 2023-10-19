@@ -125,7 +125,7 @@ header {
 }
 
 .btn {
-    width: 100%;
+    width: 70%;
     height: 45px;
     background: #162938;
     border: none;
@@ -135,6 +135,8 @@ header {
     font-size: 1em;
     color: white;
     font-weight: 500;
+    align-items: center;
+    margin-top: 2em;
 }
 
 .login-register {
@@ -384,22 +386,6 @@ body{text-align:center;}
     border-top-right-radius: 10px;
 }
 
-#secondary img {
-    min-width: 100px;
-    min-height: 100px;
-    max-height: 100px;
-    max-width: 100px;
-    object-fit: cover;
-    /*background-position: center;*/
-    /*background-size: cover;*/
-    border-radius: 50%;
-    box-shadow: 1px 1px 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    horiz-align: center;
-}
-
 #secondary h1{
     font-weight: bold;
     font-size: 30px;
@@ -419,6 +405,11 @@ body{text-align:center;}
     min-height: 100px;
     max-height: 100px;
     max-width: 100px;
+    object-fit: cover;
+    /*background-position: center;*/
+    /*background-size: cover;*/
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -428,3 +419,55 @@ body{text-align:center;}
 .profile-header {
     font-size: 30px;
 }
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 10px 0;
+}
+
+.form-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-box h2 {
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+}
+
+
+
+.input-box label {
+    position: absolute;
+    /*top: 50%;*/
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    /*transition: .5s;*/
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: 0px;
+}
+
