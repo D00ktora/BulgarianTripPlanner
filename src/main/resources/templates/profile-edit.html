@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/profile-edit.css">
-    <title>Home</title>
+    <link rel="stylesheet" href="/user-profile.css">
+    <title>Profile Edit</title>
 </head>
 <body>
 <header th:replace="~{fragments/common::header}"></header>
@@ -11,7 +11,7 @@
 <div id="doc" class="yui-t2">
     <div id="hd">
         <div id="header" class="profile-header">
-            <h1>Profile</h1>
+            <h1>Edit Profile</h1>
         </div>
 
     </div>
@@ -22,23 +22,23 @@
                     <form class="form-box" th:method="post" th:action="@{/users/profile/edit}">
                         <div class="input-box">
                             <label for="username" class="h4 mb-2 text-white">Username</label>
-                            <input type="text" class="form-control" id="username" name="username"/>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username"/>
                         </div>
                         <div class="input-box">
                             <label for="firstName" class="h4 mb-2 text-white">First Name</label>
-                            <input type="text" class="form-control" id="firstName" name="username"/>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"/>
                         </div>
                         <div class="input-box">
                             <label for="lastName" class="h4 mb-2 text-white">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="username"/>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"/>
                         </div>
                         <div class="input-box">
                             <label for="email" class="h4 mb-2 text-white">Email</label>
-                            <input type="text" class="form-control" id="email" name="username"/>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email"/>
                         </div>
                         <div class="input-box">
                             <label for="Country" class="h4 mb-2 text-white">Country</label>
-                            <input type="text" class="form-control" id="Country" name="username"/>
+                            <input type="text" class="form-control" id="Country" name="country" placeholder="Country"/>
                         </div>
 
                         <button type="submit" class="btn">Register</button>
@@ -53,6 +53,7 @@
             </div>
             <div id="secondary2">
                 <a th:href="@{/users/profile}">PROFILE</a>
+                <a th:href="@{/users/profile/edit}">EDIT PROFILE</a>
                 <a href="#">EDIT MOTORCYCLE</a>
                 <a href="#">CHANGE PASSWORD</a>
                 <a href="#">CHANGE EMAIL</a>
