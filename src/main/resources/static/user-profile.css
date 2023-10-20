@@ -407,8 +407,9 @@ body{text-align:center;}
 
 #secondary h1{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #secondaryFull{
