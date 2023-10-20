@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/user-profile.css">
+    <link rel="stylesheet" href="/motorcycle-edit.css">
     <title>Profile Edit</title>
 </head>
 <body>
@@ -21,26 +21,67 @@
                 <div class="content">
                     <form class="form-box" th:method="post" th:action="@{/users/profile/edit}">
                         <div class="input-box">
-                            <label for="username" class="h4 mb-2 text-white">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username"/>
+                            <div>
+                                <label for="made" class="h4 mb-2 text-white">Made</label>
+                                <input type="text" class="form-control" id="made" name="made"/>
+                            </div>
+                            <div>
+                                <label for="model" class="h4 mb-2 text-white">Model</label>
+                                <input type="text" class="form-control" id="model" name="model"/>
+                            </div>
+                            <div>
+                                <label for="year" class="h4 mb-2 text-white">Year</label>
+                                <input type="date" class="form-control" id="year" name="year"/>
+                            </div>
                         </div>
                         <div class="input-box">
-                            <label for="firstName" class="h4 mb-2 text-white">First Name</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"/>
+                            <div>
+                                <label for="cubicLiters" class="h4 mb-2 text-white">Cubic Liters</label>
+                                <input type="number" class="form-control" id="cubicLiters" name="cubicLiters"/>
+                            </div>
+                            <div>
+                                <label for="fuelTankCapacity" class="h4 mb-2 text-white">Fuel Capacity</label>
+                                <input type="number" class="form-control" id="fuelTankCapacity" name="fuelTankCapacity"/>
+                            </div>
+                            <div>
+                                <label for="fuelConsumption" class="h4 mb-2 text-white">Fuel Consumption</label>
+                                <input type="number" class="form-control" id="fuelConsumption" name="fuelConsumption"/>
+                            </div>
                         </div>
                         <div class="input-box">
-                            <label for="lastName" class="h4 mb-2 text-white">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"/>
+                            <div>
+                                <label for="frontTireWidth" class="h4 mb-2 text-white">Front Tire Width</label>
+                                <input type="number" class="form-control" id="frontTireWidth" name="frontTireWidth"/>
+                            </div>
+                            <div>
+                                <label for="frontTireAspectRatio" class="h4 mb-2 text-white">Front Tire Aspect Ratio</label>
+                                <input type="number" class="form-control" id="frontTireAspectRatio" name="frontTireAspectRatio"/>
+                            </div>
+                            <div>
+                                <label for="frontTireDiameter" class="h4 mb-2 text-white">Front Tire Diameter</label>
+                                <input type="number" class="form-control" id="frontTireDiameter" name="frontTireDiameter"/>
+                            </div>
                         </div>
                         <div class="input-box">
-                            <label for="email" class="h4 mb-2 text-white">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email"/>
+                            <div>
+                                <label for="rearTireWidth" class="h4 mb-2 text-white">Rear Tire Width</label>
+                                <input type="number" class="form-control" id="rearTireWidth" name="rearTireWidth"/>
+                            </div>
+                            <div>
+                                <label for="rearTireAspectRatio" class="h4 mb-2 text-white">Rear Tire Aspect Ratio</label>
+                                <input type="number" class="form-control" id="rearTireAspectRatio" name="rearTireAspectRatio"/>
+                            </div>
+                            <div>
+                                <label for="rearTireDiameter" class="h4 mb-2 text-white">Rear Tire Diameter</label>
+                                <input type="number" class="form-control" id="rearTireDiameter" name="rearTireDiameter"/>
+                            </div>
                         </div>
                         <div class="input-box">
-                            <label for="Country" class="h4 mb-2 text-white">Country</label>
-                            <input type="text" class="form-control" id="Country" name="country" placeholder="Country"/>
+                            <div>
+                                <label for="transmission" class="h4 mb-2 text-white">Transmission</label>
+                                <input type="text" class="form-control" id="transmission" name="transmission"/>
+                            </div>
                         </div>
-
                         <button type="submit" class="btn">Submit</button>
                     </form>
                 </div>
