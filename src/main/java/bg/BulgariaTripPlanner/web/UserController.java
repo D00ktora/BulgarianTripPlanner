@@ -16,8 +16,12 @@ public class UserController {
     private String userProfile() {
         return "user-profile";
     }
-    @GetMapping("users/profile/edit")
+    @GetMapping("/users/profile/edit")
     public String editProfile() {
         return "profile-edit";
+    }
+    @GetMapping("/users/profile/motorcycle")
+    public String editMotorcycle() {
+        return "motorcycle-edit";
     }
 }
