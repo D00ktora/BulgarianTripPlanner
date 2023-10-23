@@ -23,7 +23,14 @@
                         <div class="input-box">
                             <div>
                                 <label for="made" class="h4 mb-2 text-white">Made</label>
-                                <input type="text" class="form-control" id="made" name="made"/>
+                                <select class="form-select show-tick" id="made" name="made">
+                                    <option value="">- Select Motorcycle Producer -</option>
+                                    <option th:each="made : ${T(bg.BulgariaTripPlanner.model.enums.Made).values()}"
+                                            th:text="${made.value}"
+                                            th:value="${made.value}"
+                                            >
+                                    </option>
+                                </select>
                             </div>
                             <div>
                                 <label for="model" class="h4 mb-2 text-white">Model</label>
