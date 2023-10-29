@@ -22,7 +22,7 @@
                     <form class="form-box" th:method="post" th:action="@{/users/profile/edit}">
                         <div class="input-box">
                             <div>
-                                <label for="made" class="h4 mb-2 text-white">Made</label>
+                                <label for="made" class="h4 mb-2 text-white">Producer</label>
                                 <select class="form-select show-tick" id="made" name="made">
                                     <option value="">- Select Motorcycle Producer -</option>
                                 </select>
@@ -55,35 +55,77 @@
                         <div class="input-box">
                             <div>
                                 <label for="frontTireWidth" class="h4 mb-2 text-white">Front Tire Width</label>
-                                <input type="number" class="form-control" id="frontTireWidth" name="frontTireWidth"/>
+                                <select class="form-select show-tick" id="frontTireWidth" name="frontTireWidth">
+                                    <option value="">- Select Font Tire Width -</option>
+                                    <option th:each="tyre : ${T(bg.BulgariaTripPlanner.model.enums.TireWidth).values()}"
+                                            th:text="${tyre.getNumVal()}"
+                                            th:value="${tyre.getNumVal()}">
+                                    </option>
+                                </select>
                             </div>
                             <div>
                                 <label for="frontTireAspectRatio" class="h4 mb-2 text-white">Front Tire Aspect Ratio</label>
-                                <input type="number" class="form-control" id="frontTireAspectRatio" name="frontTireAspectRatio"/>
+                                <select class="form-select show-tick" id="frontTireAspectRatio" name="frontTireAspectRatio">
+                                    <option value="">- Select Front Tire Aspect Ratio -</option>
+                                    <option th:each="tyreHeight : ${T(bg.BulgariaTripPlanner.model.enums.Height).values()}"
+                                            th:text="${tyreHeight.getNumVal()}"
+                                            th:value="${tyreHeight.getNumVal()}">
+                                    </option>
+                                </select>
                             </div>
                             <div>
                                 <label for="frontTireDiameter" class="h4 mb-2 text-white">Front Tire Diameter</label>
-                                <input type="number" class="form-control" id="frontTireDiameter" name="frontTireDiameter"/>
+                                <select class="form-select show-tick" id="frontTireDiameter" name="frontTireDiameter">
+                                    <option value="">- Select Front Tire Diameter -</option>
+                                    <option th:each="tyreDiameter : ${T(bg.BulgariaTripPlanner.model.enums.Diameter).values()}"
+                                            th:text="${tyreDiameter.getNumVal()}"
+                                            th:value="${tyreDiameter.getNumVal()}">
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="input-box">
                             <div>
                                 <label for="rearTireWidth" class="h4 mb-2 text-white">Rear Tire Width</label>
-                                <input type="number" class="form-control" id="rearTireWidth" name="rearTireWidth"/>
+                                <select class="form-select show-tick" id="rearTireWidth" name="rearTireWidth">
+                                    <option value="">- Select Rear Tire Width -</option>
+                                    <option th:each="tyre : ${T(bg.BulgariaTripPlanner.model.enums.TireWidth).values()}"
+                                            th:text="${tyre.getNumVal()}"
+                                            th:value="${tyre.getNumVal()}">
+                                    </option>
+                                </select>
                             </div>
                             <div>
                                 <label for="rearTireAspectRatio" class="h4 mb-2 text-white">Rear Tire Aspect Ratio</label>
-                                <input type="number" class="form-control" id="rearTireAspectRatio" name="rearTireAspectRatio"/>
+                                <select class="form-select show-tick" id="rearTireAspectRatio" name="rearTireAspectRatio">
+                                    <option value="">- Select Rear Tire Aspect Ratio -</option>
+                                    <option th:each="tyreHeight : ${T(bg.BulgariaTripPlanner.model.enums.Height).values()}"
+                                            th:text="${tyreHeight.getNumVal()}"
+                                            th:value="${tyreHeight.getNumVal()}">
+                                    </option>
+                                </select>
                             </div>
                             <div>
                                 <label for="rearTireDiameter" class="h4 mb-2 text-white">Rear Tire Diameter</label>
-                                <input type="number" class="form-control" id="rearTireDiameter" name="rearTireDiameter"/>
+                                <select class="form-select show-tick" id="rearTireDiameter" name="rearTireDiameter">
+                                    <option value="">- Select Rear Tire Diameter -</option>
+                                    <option th:each="tyreDiameter : ${T(bg.BulgariaTripPlanner.model.enums.Diameter).values()}"
+                                            th:text="${tyreDiameter.getNumVal()}"
+                                            th:value="${tyreDiameter.getNumVal()}">
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="input-box">
                             <div class="last-div">
                                 <label for="transmission" class="h4 mb-2 text-white">Transmission</label>
-                                <input type="text" class="form-control" id="transmission" name="transmission"/>
+                                <select class="form-select show-tick" id="transmission" name="transmission">
+                                    <option value="">- Select Transmission -</option>
+                                    <option th:each="transmission : ${T(bg.BulgariaTripPlanner.model.enums.TransmissionEnum).values()}"
+                                            th:text="${transmission}"
+                                            th:value="${transmission}">
+                                    </option>
+                                </select>
                             </div>
                             <button type="submit" class="btn">Submit</button>
                         </div>
