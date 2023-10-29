@@ -1,7 +1,7 @@
 package bg.BulgariaTripPlanner.model;
 
+import bg.BulgariaTripPlanner.model.enums.models.Australian;
 import bg.BulgariaTripPlanner.model.enums.Made;
-import bg.BulgariaTripPlanner.model.enums.Model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ public class Motorcycle extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private Made made;
     @Column(nullable = false)
-    private Model model;
+    private Australian australian;
     private LocalDate year;
     @ManyToOne(optional = false)
     private Engine engine;
@@ -34,12 +34,12 @@ public class Motorcycle extends BaseEntity {
         return this;
     }
 
-    public Model getModel() {
-        return model;
+    public Australian getModel() {
+        return australian;
     }
 
-    public Motorcycle setModel(Model model) {
-        this.model = model;
+    public Motorcycle setModel(Australian australian) {
+        this.australian = australian;
         return this;
     }
 

@@ -518,3 +518,7 @@ body{text-align:center;}
 .input-box input:valid~label {
     top: 0;
 }
+
+.AbeStar {
+    display: none;
+}

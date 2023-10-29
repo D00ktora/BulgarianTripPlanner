@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/motorcycle-edit.css">
@@ -34,7 +34,13 @@
                             </div>
                             <div>
                                 <label for="model" class="h4 mb-2 text-white">Model</label>
-                                <input type="text" class="form-control" id="model" name="model"/>
+                                <select class="form-select show-tick" id="model" name="model">
+                                    <option value="">- Select Motorcycle Model -</option>
+                                    <option class="AbeStar"  th:each="model : ${T(bg.BulgariaTripPlanner.model.enums.models.AbeStar).values()}"
+                                            th:text="${model.value}"
+                                            th:value="${model.value}"
+                                    >
+                                </select>
                             </div>
                             <div>
                                 <label for="year" class="h4 mb-2 text-white">Year</label>
@@ -109,5 +115,6 @@
     </div>
     </div>
 </div>
+<script src="/select.js"> </script>
 </body>
 </html>

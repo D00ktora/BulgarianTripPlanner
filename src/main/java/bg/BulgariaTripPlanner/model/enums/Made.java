@@ -1,13 +1,13 @@
 package bg.BulgariaTripPlanner.model.enums;
 
 public enum Made {
-    Abbotsfor("Abbotsfar"),
+    Abbotsfar("Abbotsfar"),
     AbeStar("AbeStar"),
     Abra("Abra"),
     Acabion("Acabion"),
     AccessMotors("Access Motors"),
     AceMotorCorporation("Ace Motor Corporation"),
-            Adiva("Adiva"),
+    Adiva("Adiva"),
     Adler("Adler"),
     AdlyMoto("Adly Moto"),
     Aeon("Aeon"),
