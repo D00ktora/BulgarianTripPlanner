@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<!--Navigation start-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-10 pe-3 ps-3 pt-2 z-1" style="background: none !important;">
+  <div class="container-fluid">
+    <!--Logo Button Start-->
+    <a class="navbar-brand fw-bold text-white fs-2" href="#">BTPlanner</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--Logo Button End-->
+    <!--Navigation Links Start-->
+    <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Home</a></div>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" href="#">Contacts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin Panel
+          </a>
+          <ul class="dropdown-menu btn btn-light m-lg-2">
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Action</a></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <!--Navigation Links End-->
+  </div>
+</nav>
+<!--Navigation End-->
+
+<div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
+  <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Login</p>
+  <form>
+    <div class="row mb-3 justify-content-center">
+      <label for="inputEmail3" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">Email</label>
+      <div class="col-sm-5">
+        <input type="email" class="form-control" id="inputEmail3">
+      </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+      <label for="inputPassword3" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">Password</label>
+      <div class="col-sm-5">
+        <input type="password" class="form-control" id="inputPassword3">
+      </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+      <div class="col-sm-8 offset-sm-5">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <label class="form-check-label text-white" for="gridCheck1">
+            Remember me
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3 align-items-center justify-content-center">
+      <div class="text-center">
+        <button type="submit" class="btn btn-outline-light btn-lg w-50">Sign in</button>
+      </div>
+    </div>
+    <div class="row mb-3 align-items-center justify-content-center text-white">
+      <div class="text-center fw-bolder">
+        Don`t have an account? <a class="link-light" href="#">Register</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>

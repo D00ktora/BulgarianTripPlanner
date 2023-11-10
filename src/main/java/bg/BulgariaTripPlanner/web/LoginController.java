@@ -26,7 +26,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(HttpSession httpSession) {
-        return "login";
+        return "Login";
     }
 
     @PostMapping("/login")

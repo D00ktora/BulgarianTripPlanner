@@ -1,6 +1,5 @@
 package bg.BulgariaTripPlanner.web;
 
-import bg.BulgariaTripPlanner.dto.LoginDTO;
 import bg.BulgariaTripPlanner.dto.RegisterDTO;
 import bg.BulgariaTripPlanner.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -27,7 +26,7 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String indexPage(HttpSession httpSession) {
-        return "register";
+        return "Register";
     }
     @PostMapping("/register")
     public String register(@Valid RegisterDTO registerDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {

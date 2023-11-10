@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+</head>
+<body>
+<!--Navigation start-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-10 pe-3 ps-3 pt-2 z-1" style="background: none !important;">
+  <div class="container-fluid">
+    <!--Logo Button Start-->
+    <a class="navbar-brand fw-bold text-white fs-2" href="#">BTPlanner</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--Logo Button End-->
+    <!--Navigation Links Start-->
+    <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Home</a></div>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" href="#">Contacts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin Panel
+          </a>
+          <ul class="dropdown-menu btn btn-light m-lg-2">
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Action</a></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <!--Navigation Links End-->
+  </div>
+</nav>
+<!--Navigation End-->
+
+<div class="container bg-black bg-opacity-25 rounded rounded-4 border border-2 mt-5" style="backdrop-filter: blur(3px)">
+  <div class="row justify-content-center align-items-center text-white text-center mt-3">
+    <p class="display-4">
+      Contact Us
+    </p>
+  </div>
+  <div class="row mt-5 pb-5">
+    <div class="col-6 d-none d-md-block ps-5">
+      <h1 class="h1 mb-5 text-white">
+        Let`s discuss on something <span class="text-secondary bg-white rounded rounded-3">cool</span> together.
+      </h1>
+      <div class="row justify-content-center align-items-center mb-4">
+        <div class="col text-start">
+          <h4 class="h-5 text-white"><i class="bi bi-envelope mt-5 pe-2" style="font-size: 2rem; color: white;"></i> f.and.g.2019@gmail.com</h4>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center mb-4">
+        <div class="col text-start bg-secondary rounded rounded-5 pt-2 bg-opacity-75">
+          <h4 class="h-5 text-white"><i class="bi bi-telephone mt-5 pe-2" style="font-size: 2rem; color: white;"></i> +359 888 888 888</h4>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center mb-4">
+        <div class="col text-start">
+          <h4 class="h-5 text-white"><i class="bi bi-geo-alt-fill mt-5 pe-2" style="font-size: 2rem; color: white;"></i>Bulgaria, Ruse</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 pe-3">
+      <form class="form-control">
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+          <div id="nameHelp" class="form-text">Correct name is important for us, in order to have better comunication</div>
+        </div>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Your Email</label>
+          <input type="text" class="form-control" id="emailInput">
+          <div id="emailInputHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Your Message</label>
+          <input type="text" class="form-control" id="message" aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-outline-dark" >
+          <i class="bi bi-send pe-2"></i>
+          Message Us</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<!--Navigation start-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-10 pe-3 ps-3 pt-2 z-1" style="background: none !important;">
+  <div class="container-fluid">
+    <!--Logo Button Start-->
+    <a class="navbar-brand fw-bold text-white fs-2" href="#">BTPlanner</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--Logo Button End-->
+    <!--Navigation Links Start-->
+    <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Home</a></div>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" href="#">Contacts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin Panel
+          </a>
+          <ul class="dropdown-menu btn btn-light m-lg-2">
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Action</a></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <!--Navigation Links End-->
+  </div>
+</nav>
+<!--Navigation End-->
+
+<div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
+  <div class="row justify-content-center align-self-auto">
+    <div class="col-12">
+      <p class="display-3 text-center text-white fw-bold mb-4 text-decoration-underline">Edit Profile</p>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-4 me-2 text-white">
+      <div class="row border border-white border-2 rounded-4 align-self-center mb-2">
+        <div class="col-12 text-center">
+          <p class="h1">UserName</p>
+          <img src="#" alt="#" class="img-fluid">
+        </div>
+      </div>
+      <div class="row border border-white border-2 rounded-4 align-self-center">
+        <div class="col-12 justify-content-center align-items-center text-center">
+          <div class="d-grid gap-1 mx-auto">
+            <button class="btn btn-outline-light btn-lg m-2" type="button">PROFILE</button>
+          </div>
+          <div class="d-grid gap-1 col-12 mx-auto">
+            <button class="btn btn-outline-light btn-lg m-2" type="button">EDIT PROFILE</button>
+          </div>
+          <div class="d-grid gap-1 col-12 mx-auto">
+            <button class="btn btn-outline-light btn-lg text-wrap m-2" type="button">ADD MOTORCYCLE</button>
+          </div>
+          <div class="d-grid gap-1 col-12 mx-auto">
+            <button class="btn btn-outline-light btn-lg m-2" type="button">CHANGE PASSWORD</button>
+          </div>
+          <div class="d-grid gap-1 col-12 mx-auto">
+            <button class="btn btn-outline-light btn-lg m-2" type="button">CHANGE EMAIL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-7 text-white border border-2 border-white rounded-4">
+      <div class="row">
+        <div class="col-12">
+          <p class="h1 text-center fw-bolder mt-4">Edit Profile</p>
+        </div>
+      </div>
+      <div class="row mb-4 mt-4">
+        <div class="col-12">
+          <div class="row">
+            <div class="col">
+              <label for="username" class="form-label h4">Username</label>
+              <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="username">
+            </div>
+            <div class="col">
+              <label for="firstName" class="form-label h4">First Name</label>
+              <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" id="firstName">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4 mt-4">
+        <div class="col-12">
+          <div class="row">
+            <div class="col">
+              <label for="lastName" class="form-label h4">Last Name</label>
+              <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" id="lastName">
+            </div>
+            <div class="col">
+              <label for="email" class="form-label h4">Email</label>
+              <input type="text" class="form-control" placeholder="Email" aria-label="Email" id="email">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4 bt-4">
+        <div class="col-12">
+          <div class="row">
+            <div class="col">
+              <label for="country" class="form-label h4">Country</label>
+              <input type="text" class="form-control" placeholder="Country" aria-label="Country" id="country">
+            </div>
+            <div class="col">
+              <label for="city" class="form-label h4">City</label>
+              <input type="text" class="form-control" placeholder="City" aria-label="City" id="city">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <button type="submit" class="btn btn-outline-light btn-lg w-50 mb-3">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>

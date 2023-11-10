@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Motorcycle</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<!--Navigation start-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-10 pe-3 ps-3 pt-2 z-1" style="background: none !important;">
+  <div class="container-fluid">
+    <!--Logo Button Start-->
+    <a class="navbar-brand fw-bold text-white fs-2" href="#">BTPlanner</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--Logo Button End-->
+    <!--Navigation Links Start-->
+    <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Home</a></div>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" href="#">Contacts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin Panel
+          </a>
+          <ul class="dropdown-menu btn btn-light m-lg-2">
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Action</a></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <!--Navigation Links End-->
+  </div>
+</nav>
+<!--Navigation End-->
+
+<form>
+  <div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
+    <div class="row mt-4">
+      <div class="col">
+        <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Create Motorcycle</p>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Producer</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="producer" placeholder="Producer">
+            <label for="producer">Producer</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Model</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="model" placeholder="Model">
+            <label for="model">Model</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Cubic Liters</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="cubicLiters" placeholder="Cubic Liters">
+            <label for="cubicLiters">Cubic Liters</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Production Date</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="productionDate" placeholder="Production Date">
+            <label for="productionDate">Production Date</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Fuel Consumption</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="fuelConsumption" placeholder="Fuel Consumption">
+            <label for="fuelConsumption">Fuel Consumption</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Fuel Capacity</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="fuelCapacity" placeholder="Fuel Capacity">
+            <label for="fuelCapacity">Fuel Capacity</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Front Tire</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="frontTire" placeholder="Front Tire">
+            <label for="frontTire">Front Tire</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Rear Tire</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="rearTire" placeholder="Rear Tire">
+            <label for="rearTire">Rear Tire</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-10 col-lg-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Transmission</span>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="transmission" placeholder="Transmission">
+            <label for="transmission">Transmission</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center text-center mb-3">
+      <div class="col-12 col-md-10 col-lg-6">
+        <button type="submit" class="btn btn-outline-light btn-lg w-75 fw-bolder">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
