@@ -25,17 +25,12 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login(HttpSession httpSession) {
+    public String login() {
         return "Login";
     }
 
     @PostMapping("/login")
     public String login(@Valid LoginDTO loginDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (!userService.login(loginDTO)) {
-            redirectAttributes.addFlashAttribute("loginDTO", loginDTO);
-            redirectAttributes.addFlashAttribute("badCredentials", true);
-            return "redirect:/login";
-        }
         return "redirect:/";
     }
 

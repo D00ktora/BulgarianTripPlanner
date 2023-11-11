@@ -1,10 +1,104 @@
 package bg.BulgariaTripPlanner.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
-    
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    @Enumerated(value = EnumType.STRING)
+    @OneToMany
+    private List<Role> roles;
+    @ManyToOne
+    private Motorcycle motorcycle;
+    @OneToMany
+    private List<Trip> trips;
+    private boolean active;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public User setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public User setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public User setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(List<Role> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public Motorcycle getMotorcycle() {
+        return motorcycle;
+    }
+
+    public User setMotorcycle(Motorcycle motorcycle) {
+        this.motorcycle = motorcycle;
+        return this;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public User setTrips(List<Trip> trips) {
+        this.trips = trips;
+        return this;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public User setActive(boolean active) {
+        this.active = active;
+        return this;
+    }
 }

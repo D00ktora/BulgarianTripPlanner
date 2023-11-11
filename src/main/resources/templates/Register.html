@@ -12,24 +12,39 @@
   <nav th:replace="~{fragments/navbar}"></nav>
 </div>
 
-<form>
+<form
+        th:action="@{/register}"
+        th:method="post"
+        th:object="${registerDTO}">
   <div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
+
     <div class="row mt-4">
       <div class="col">
         <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Register</p>
       </div>
     </div>
+
     <div class="row align-items-center justify-content-center mb-4">
       <div class="col-12 col-md-8">
         <div class="input-group mb-3">
           <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center">Username</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
-            <label for="floatingInputGroup1">Username</label>
+            <input type="text"
+                    class="form-control"
+                    name="username"
+                    th:field="*{username}"
+                    th:errorclass="is-invalid"
+                    id="username"
+                    placeholder="Username">
+            <label for="username">Username</label>
+            <p class="invalid-feedback errors alert alert-danger">
+              First name can not be empty.
+            </p>
           </div>
         </div>
       </div>
     </div>
+
     <div class="row align-items-center justify-content-center mb-4">
       <div class="col-12 col-md-8">
         <div class="input-group mb-3">
@@ -41,6 +56,7 @@
         </div>
       </div>
     </div>
+
     <div class="row align-items-center justify-content-center mb-4">
       <div class="col-12 col-md-8">
         <div class="input-group mb-3">
@@ -52,6 +68,7 @@
         </div>
       </div>
     </div>
+
     <div class="row align-items-center justify-content-center mb-4">
       <div class="col-12 col-md-8">
         <div class="input-group mb-3">
@@ -63,14 +80,16 @@
         </div>
       </div>
     </div>
+
     <div class="row align-items-center justify-content-center text-center mb-3">
       <div class="col-12 col-md-8">
         <button type="submit" class="btn btn-outline-light btn-lg w-50">Register</button>
       </div>
     </div>
+
     <div class="row align-items-center justify-content-center text-center">
       <div class="col-12 col-md-8 text-white fw-bolder">
-        Already have an account? <a class="link-light" href="#">Login</a>
+        Already have an account? <a class="link-light" href="/login">Login</a>
       </div>
     </div>
   </div>

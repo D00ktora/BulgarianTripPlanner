@@ -25,16 +25,11 @@ public class RegisterController {
     }
 
     @GetMapping("/register")
-    public String indexPage(HttpSession httpSession) {
+    public String indexPage() {
         return "Register";
     }
     @PostMapping("/register")
-    public String register(@Valid RegisterDTO registerDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors() || !userService.register(registerDTO)) {
-            redirectAttributes.addFlashAttribute("registerDTO", registerDTO);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
-            return "redirect:/register";
-        }
+    public String register() {
         return "redirect:/";
     }
 }
