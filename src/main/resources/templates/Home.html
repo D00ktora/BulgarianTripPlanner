@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
@@ -7,50 +7,10 @@
   <link rel="stylesheet" href="/css/stylesheet.css">
 </head>
 <body>
-<!--Navigation start-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-10 pe-3 ps-3 pt-2 z-1" style="background: none !important;">
-  <div class="container-fluid">
-    <!--Logo Button Start-->
-    <a class="navbar-brand fw-bold text-white fs-2" href="#">BTPlanner</a>
-    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--Logo Button End-->
-    <!--Navigation Links Start-->
-    <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Home</a></div>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" href="#">Contacts</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin Panel
-          </a>
-          <ul class="dropdown-menu btn btn-light m-lg-2">
-            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Action</a></li>
-            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Logout</a>
-        </li>
-      </ul>
-    </div>
-    <!--Navigation Links End-->
-  </div>
-</nav>
-<!--Navigation End-->
+
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
 
 <div class="container mt-5 justify-content-center align-items-center">
   <div class="row bg-light rounded rounded-5 opacity-75 border border-2 border-black">
@@ -72,12 +32,13 @@
       </figure>
     </div>
     <div class="col-6 d-none d-sm-none d-lg-block">
-      <img class="img-fluid rounded rounded-circle border border-2 border-white" src="img/map-img.jpeg" alt="map-img">
+      <img class="img-fluid rounded rounded-circle border border-2 border-white" src="/img/img.png" alt="map-img">
     </div>
   </div>
   <div class="row mt-5 mb-5 align-items-center justify-content-center text-center">
     <div class="col-12">
-      <button type="submit" class="btn btn-secondary btn-outline-light btn-lg w-50">Start Now</button>
+      <a class="btn btn-secondary btn-outline-light btn-lg w-50" href="/trip" role="button">Start Now</a>
+<!--      <button type="submit" class="btn btn-secondary btn-outline-light btn-lg w-50">Start Now</button>-->
     </div>
   </div>
   <div class="row mt-5 align-items-center justify-content-center text-center">
@@ -99,21 +60,21 @@
       </div>
       <div class="carousel-inner rounded rounded-5 border border-white border-5">
         <div class="carousel-item active" data-bs-interval="6000">
-          <img src="img/map-img.jpeg" class="d-block w-100" alt="...">
+          <img src="/img/img.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 rounded rounded-4">
             <h5>First slide label</h5>
             <a href="" class="link-offset-1-hover link-light">Some representative placeholder content for the first slide.</a>
           </div>
         </div>
         <div class="carousel-item" data-bs-interval="3000">
-          <img src="img/map-img.jpeg" class="d-block w-100" alt="...">
+          <img src="/img/img.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 rounded rounded-4">
             <h5>Second slide label</h5>
             <a href="" class="link-offset-1-hover link-light">Some representative placeholder content for the first slide.</a>
           </div>
         </div>
         <div class="carousel-item" data-bs-interval="3000">
-          <img src="img/map-img.jpeg" class="d-block w-100" alt="...">
+          <img src="/img/img.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 rounded rounded-4">
             <h5>Third slide label</h5>
             <a href="" class="link-offset-1-hover link-light">Some representative placeholder content for the first slide.</a>

@@ -17,4 +17,12 @@ public class UserController {
     public String editMotorcycle() {
         return "AddMotorcycle";
     }
+    @GetMapping("/users/profile/change-password")
+    public String changePassword() {
+        return "ChangePassword";
+    }
+    @GetMapping("/users/profile/change-email")
+    public String changeEmail() {
+        return "ChangeEmail";
+    }
 }

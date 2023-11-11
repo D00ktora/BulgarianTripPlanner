@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Add Motorcycle</title>
@@ -8,50 +8,9 @@
 </head>
 <body>
 
-<!--Navigation start-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-10 pe-3 ps-3 pt-2 z-1" style="background: none !important;">
-  <div class="container-fluid">
-    <!--Logo Button Start-->
-    <a class="navbar-brand fw-bold text-white fs-2" href="#">BTPlanner</a>
-    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--Logo Button End-->
-    <!--Navigation Links Start-->
-    <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Home</a></div>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" href="#">Contacts</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin Panel
-          </a>
-          <ul class="dropdown-menu btn btn-light m-lg-2">
-            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Action</a></li>
-            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="#">Logout</a>
-        </li>
-      </ul>
-    </div>
-    <!--Navigation Links End-->
-  </div>
-</nav>
-<!--Navigation End-->
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
 
 <div class="container p-3 bg-black bg-opacity-50 border border-white border-2 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
   <div class="row justify-content-center align-self-auto">
@@ -70,19 +29,24 @@
       <div class="row border border-white border-2 rounded-4 align-self-center">
         <div class="col-12 justify-content-center align-items-center text-center">
           <div class="d-grid gap-1 mx-auto">
-            <button class="btn btn-outline-light btn-lg m-2" type="button">PROFILE</button>
+            <a class="btn btn-outline-light btn-lg m-2" href="/users/profile" role="button">PROFILE</a>
+<!--            <button class="btn btn-outline-light btn-lg m-2" type="button">PROFILE</button>-->
           </div>
           <div class="d-grid gap-1 col-12 mx-auto">
-            <button class="btn btn-outline-light btn-lg m-2" type="button">EDIT PROFILE</button>
+            <a class="btn btn-outline-light btn-lg m-2" href="/users/profile/edit" role="button">EDIT PROFILE</a>
+<!--            <button class="btn btn-outline-light btn-lg m-2" type="button">EDIT PROFILE</button>-->
           </div>
           <div class="d-grid gap-1 col-12 mx-auto">
-            <button class="btn btn-outline-light btn-lg text-wrap m-2" type="button">ADD MOTORCYCLE</button>
+            <a class="btn btn-outline-light btn-lg m-2" href="/users/profile/motorcycle" role="button">ADD MOTORCYCLE</a>
+<!--            <button class="btn btn-outline-light btn-lg text-wrap m-2" type="button">ADD MOTORCYCLE</button>-->
           </div>
           <div class="d-grid gap-1 col-12 mx-auto">
-            <button class="btn btn-outline-light btn-lg m-2" type="button">CHANGE PASSWORD</button>
+            <a class="btn btn-outline-light btn-lg m-2" href="/users/profile/change-password" role="button">CHANGE PASSWORD</a>
+<!--            <button class="btn btn-outline-light btn-lg m-2" type="button">CHANGE PASSWORD</button>-->
           </div>
           <div class="d-grid gap-1 col-12 mx-auto">
-            <button class="btn btn-outline-light btn-lg m-2" type="button">CHANGE EMAIL</button>
+            <a class="btn btn-outline-light btn-lg m-2" href="/users/profile/change-email" role="button">CHANGE EMAIL</a>
+<!--            <button class="btn btn-outline-light btn-lg m-2" type="button">CHANGE EMAIL</button>-->
           </div>
         </div>
       </div>
@@ -90,7 +54,7 @@
     <div class="col-12 col-md-7 text-white border border-2 border-white rounded-4">
       <div class="row mb-2 mb-md-5">
         <div class="col-12">
-          <p class="h1 text-center fw-bolder mt-4">Edit Profile</p>
+          <p class="h1 text-center fw-bolder mt-4">Choose Motorcycle</p>
         </div>
       </div>
       <select class="form-select form-select-lg mt-sm-0 mt-md-5  mb-3" aria-label="Large select example">
@@ -110,7 +74,8 @@
           <button type="submit" class="btn btn-outline-light btn-lg w-100 mb-3">Save</button>
         </div>
       </div>
-      <button type="button" class="btn btn-outline-light btn-lg w-100 mb-3">Create Motorcycle</button>
+      <a class="btn btn-outline-light btn-lg w-100 mb-3" href="/create/motorcycle" role="button">Create Motorcycle</a>
+<!--      <button type="button" class="btn btn-outline-light btn-lg w-100 mb-3">Create Motorcycle</button>-->
     </div>
   </div>
 </div>
