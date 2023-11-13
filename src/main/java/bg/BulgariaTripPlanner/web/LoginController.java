@@ -31,7 +31,12 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@Valid LoginDTO loginDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        return "redirect:/";
+        if (bindingResult.hasErrors() || !userService.login(loginDTO)) {
+            redirectAttributes.addFlashAttribute("loginDTO", loginDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.loginDTO", bindingResult);
+            return "redirect:/login";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/logout")

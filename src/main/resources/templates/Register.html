@@ -37,21 +37,35 @@
                     id="username"
                     placeholder="Username">
             <label for="username">Username</label>
-            <p class="invalid-feedback errors alert alert-danger">
-              First name can not be empty.
-            </p>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('username')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
 
     <div class="row align-items-center justify-content-center mb-4">
       <div class="col-12 col-md-8">
         <div class="input-group mb-3">
           <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center">Email</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInputGroup2" placeholder="Email">
+            <input type="email"
+                    class="form-control"
+                    id="floatingInputGroup2"
+                    placeholder="Email"
+                    name="email"
+                    th:field="*{email}"
+                    th:errorclass="is-invalid">
             <label for="floatingInputGroup2">Email</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('email')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -62,8 +76,19 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center">Password</span>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingInputGroup3" placeholder="Password">
+            <input type="password"
+                  class="form-control"
+                  id="floatingInputGroup3"
+                  placeholder="Password"
+                  name="password"
+                  th:field="*{password}"
+                  th:errorclass="is-invalid">
             <label for="floatingInputGroup3">Password</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('password')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -74,8 +99,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center align-items-center text-wrap">Confirm Password</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInputGroup4" placeholder="Confirm Password">
+            <input type="password" name="confirmPassword" th:field="*{confirmPassword}" th:errorclass="is-invalid" class="form-control" id="floatingInputGroup4" placeholder="Confirm Password">
             <label for="floatingInputGroup4">Confirm Password</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('confirmPassword')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>

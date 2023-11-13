@@ -1,16 +1,21 @@
 package bg.BulgariaTripPlanner.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
+    @NotNull
     private String username;
     private String firstName;
     private String lastName;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
     @Enumerated(value = EnumType.STRING)
     @OneToMany
@@ -19,7 +24,7 @@ public class User extends BaseEntity {
     private Motorcycle motorcycle;
     @OneToMany
     private List<Trip> trips;
-    private boolean active;
+    private boolean active = false;
 
     public String getUsername() {
         return username;

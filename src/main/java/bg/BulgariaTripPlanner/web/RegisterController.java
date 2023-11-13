@@ -29,7 +29,12 @@ public class RegisterController {
         return "Register";
     }
     @PostMapping("/register")
-    public String register() {
-        return "redirect:/";
+    public String register(@Valid RegisterDTO registerDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors() || (!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) || !userService.register(registerDTO)) {
+            redirectAttributes.addFlashAttribute("registerDTO", registerDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
+            return "redirect:/register";
+        }
+        return "redirect:/login";
     }
 }

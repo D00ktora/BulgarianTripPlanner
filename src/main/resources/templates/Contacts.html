@@ -42,20 +42,38 @@
       </div>
     </div>
     <div class="col-12 col-md-6 pe-3">
-      <form class="form-control">
+      <form class="form-control"
+            th:action="@{/contacts}"
+            th:method="post"
+            th:object="${messageDTO}">
         <div class="mb-3">
           <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
-          <div id="nameHelp" class="form-text">Correct name is important for us, in order to have better comunication</div>
+          <input type="text" name="name" th:field="*{name}" th:errorclass="is-invalid" class="form-control" id="name" aria-describedby="emailHelp">
+          <div id="nameHelp" class="form-text">Correct name is important for us, in order to have better communication</div>
+          <div class="invalid-feedback errors alert alert-danger">
+            <div
+                th:each="error : ${#fields.errors('name')}"
+                th:text="${error}"/>
+          </div>
         </div>
         <div class="mb-3">
-          <label for="emailInput" class="form-label">Your Email</label>
-          <input type="text" class="form-control" id="emailInput">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="text" name="email" th:field="*{email}" th:errorclass="is-invalid" class="form-control" id="email">
           <div id="emailInputHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <div class="invalid-feedback errors alert alert-danger">
+            <div
+                    th:each="error : ${#fields.errors('email')}"
+                    th:text="${error}"/>
+          </div>
         </div>
         <div class="mb-3">
           <label for="message" class="form-label">Your Message</label>
-          <input type="text" class="form-control" id="message" aria-describedby="emailHelp">
+          <input type="text" name="message" th:field="*{message}" th:errorclass="is-invalid" class="form-control" id="message" aria-describedby="emailHelp">
+          <div class="invalid-feedback errors alert alert-danger">
+            <div
+                    th:each="error : ${#fields.errors('message')}"
+                    th:text="${error}"/>
+          </div>
         </div>
         <button type="submit" class="btn btn-outline-dark" >
           <i class="bi bi-send pe-2"></i>

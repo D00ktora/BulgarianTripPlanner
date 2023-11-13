@@ -14,17 +14,19 @@
 
 <div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
   <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Login</p>
-  <form>
+  <form th:action="@{/login}"
+        th:method="post"
+        th:object="${loginDTO}">
     <div class="row mb-3 justify-content-center">
-      <label for="inputEmail3" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">Email</label>
+      <label for="email" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">Email</label>
       <div class="col-sm-5">
-        <input type="email" class="form-control" id="inputEmail3">
+        <input type="email" name="email" th:field="*{email}" th:errorclass="is-invalid" class="form-control" id="email">
       </div>
     </div>
     <div class="row mb-3 justify-content-center">
       <label for="inputPassword3" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">Password</label>
       <div class="col-sm-5">
-        <input type="password" class="form-control" id="inputPassword3">
+        <input type="password" name="password" th:field="*{password}" th:errorclass="is-invalid" class="form-control" id="inputPassword3">
       </div>
     </div>
     <div class="row mb-3 justify-content-center">

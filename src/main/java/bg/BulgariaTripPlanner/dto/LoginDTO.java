@@ -1,7 +1,11 @@
 package bg.BulgariaTripPlanner.dto;
 
+import jakarta.validation.constraints.Size;
+
 public class LoginDTO {
+
     private String email;
+    @Size(min = 4, message = "Password must be minimum 5 characters long.")
     private String password;
 
     public String getEmail() {
