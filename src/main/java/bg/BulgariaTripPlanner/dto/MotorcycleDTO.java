@@ -1,36 +1,35 @@
 package bg.BulgariaTripPlanner.dto;
 
+import bg.BulgariaTripPlanner.model.Tire;
+import bg.BulgariaTripPlanner.model.Transmission;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
 
 public class MotorcycleDTO {
     @NotBlank(message = "Producer cannot be empty.")
-    private String made;
+    private String producer;
     @NotBlank(message = "Model cannot be empty.")
     private String model;
-    private LocalDate year;
+    @NotNull
+    private LocalDate productionDate;
+    @Positive(message = "Cubic Liters must be positive number.")
     private Double cubicLiters;
-    @NotBlank(message = "Tank capacity is requested for further calculations")
-    private Double fuelTankCapacity;
-    @NotBlank(message = "Fuel consumption is requested for further calculations")
-    private Double fuelConsumptionPer100Km;
-    private Integer frontTireWidth;
-    private Integer rearTireWidth;
-    private Integer frontTireAspectRatio;
-    private Integer rearTireAspectRatio;
-    private Integer frontTireSpeedRating;
-    private Integer rearTireSpeedRating;
-    private Integer frontTireDiameter;
-    private Integer rearTireDiameter;
+    @Positive(message = "Tank capacity is requested for further calculations.")
+    private Double fuelCapacity;
+    @Positive(message = "Fuel consumption is requested for further calculations.")
+    private Double fuelConsumption;
+    @NotBlank(message = "Transmission type is required.")
     private String transmission;
 
-    public String getMade() {
-        return made;
+    public String getProducer() {
+        return producer;
     }
 
-    public MotorcycleDTO setMade(String made) {
-        this.made = made;
+    public MotorcycleDTO setProducer(String producer) {
+        this.producer = producer;
         return this;
     }
 
@@ -43,12 +42,12 @@ public class MotorcycleDTO {
         return this;
     }
 
-    public LocalDate getYear() {
-        return year;
+    public LocalDate getProductionDate() {
+        return productionDate;
     }
 
-    public MotorcycleDTO setYear(LocalDate year) {
-        this.year = year;
+    public MotorcycleDTO setProductionDate(LocalDate productionDate) {
+        this.productionDate = productionDate;
         return this;
     }
 
@@ -61,101 +60,29 @@ public class MotorcycleDTO {
         return this;
     }
 
-    public Double getFuelTankCapacity() {
-        return fuelTankCapacity;
+    public Double getFuelCapacity() {
+        return fuelCapacity;
     }
 
-    public MotorcycleDTO setFuelTankCapacity(Double fuelTankCapacity) {
-        this.fuelTankCapacity = fuelTankCapacity;
+    public MotorcycleDTO setFuelCapacity(Double fuelCapacity) {
+        this.fuelCapacity = fuelCapacity;
         return this;
     }
 
-    public Double getFuelConsumptionPer100Km() {
-        return fuelConsumptionPer100Km;
+    public Double getFuelConsumption() {
+        return fuelConsumption;
     }
 
-    public MotorcycleDTO setFuelConsumptionPer100Km(Double fuelConsumptionPer100Km) {
-        this.fuelConsumptionPer100Km = fuelConsumptionPer100Km;
+    public MotorcycleDTO setFuelConsumption(Double fuelConsumption) {
+        this.fuelConsumption = fuelConsumption;
         return this;
     }
 
-    public Integer getFrontTireWidth() {
-        return frontTireWidth;
-    }
-
-    public MotorcycleDTO setFrontTireWidth(Integer frontTireWidth) {
-        this.frontTireWidth = frontTireWidth;
-        return this;
-    }
-
-    public Integer getRearTireWidth() {
-        return rearTireWidth;
-    }
-
-    public MotorcycleDTO setRearTireWidth(Integer rearTireWidth) {
-        this.rearTireWidth = rearTireWidth;
-        return this;
-    }
-
-    public Integer getFrontTireAspectRatio() {
-        return frontTireAspectRatio;
-    }
-
-    public MotorcycleDTO setFrontTireAspectRatio(Integer frontTireAspectRatio) {
-        this.frontTireAspectRatio = frontTireAspectRatio;
-        return this;
-    }
-
-    public Integer getRearTireAspectRatio() {
-        return rearTireAspectRatio;
-    }
-
-    public MotorcycleDTO setRearTireAspectRatio(Integer rearTireAspectRatio) {
-        this.rearTireAspectRatio = rearTireAspectRatio;
-        return this;
-    }
-
-    public Integer getFrontTireSpeedRating() {
-        return frontTireSpeedRating;
-    }
-
-    public MotorcycleDTO setFrontTireSpeedRating(Integer frontTireSpeedRating) {
-        this.frontTireSpeedRating = frontTireSpeedRating;
-        return this;
-    }
-
-    public Integer getRearTireSpeedRating() {
-        return rearTireSpeedRating;
-    }
-
-    public MotorcycleDTO setRearTireSpeedRating(Integer rearTireSpeedRating) {
-        this.rearTireSpeedRating = rearTireSpeedRating;
-        return this;
-    }
-
-    public Integer getFrontTireDiameter() {
-        return frontTireDiameter;
-    }
-
-    public MotorcycleDTO setFrontTireDiameter(Integer frontTireDiameter) {
-        this.frontTireDiameter = frontTireDiameter;
-        return this;
-    }
-
-    public Integer getRearTireDiameter() {
-        return rearTireDiameter;
-    }
-
-    public MotorcycleDTO setRearTireDiameter(Integer rearTireDiameter) {
-        this.rearTireDiameter = rearTireDiameter;
-        return this;
-    }
-
-    public String getTransmission() {
+    public String  getTransmission() {
         return transmission;
     }
 
-    public MotorcycleDTO setTransmission(String transmission) {
+    public MotorcycleDTO setTransmission(String  transmission) {
         this.transmission = transmission;
         return this;
     }

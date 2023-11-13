@@ -3,6 +3,7 @@ package bg.BulgariaTripPlanner.service;
 import bg.BulgariaTripPlanner.dto.LoginDTO;
 import bg.BulgariaTripPlanner.dto.MessageDTO;
 import bg.BulgariaTripPlanner.dto.RegisterDTO;
+import bg.BulgariaTripPlanner.dto.UserInfoDTO;
 import bg.BulgariaTripPlanner.model.MessageEntity;
 import bg.BulgariaTripPlanner.model.Role;
 import bg.BulgariaTripPlanner.model.Roles;
@@ -54,5 +55,11 @@ public class UserService {
         }
         this.messageRepository.save(mapped);
         return true;
+    }
+
+    public UserInfoDTO getUserInfo() {
+        // TODO: 13.11.23 To implement this when run tru SECURITY!!!
+        // UserInfoDTO is created, all fields are done, only thing that left is to run thru security and get the correct user.
+        return null;
     }
 }

@@ -17,6 +17,8 @@ public class User extends BaseEntity {
     private String email;
     @NotNull
     private String password;
+    private String country;
+    private String address;
     @Enumerated(value = EnumType.STRING)
     @OneToMany
     private List<Role> roles;
@@ -28,6 +30,24 @@ public class User extends BaseEntity {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public User setCountry(String country) {
+        this.country = country;
+        return this;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public User setAddress(String address) {
+        this.address = address;
+        return this;
     }
 
     public User setUsername(String username) {

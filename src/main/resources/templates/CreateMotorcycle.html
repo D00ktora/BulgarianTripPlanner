@@ -12,7 +12,10 @@
   <nav th:replace="~{fragments/navbar}"></nav>
 </div>
 
-<form>
+<form
+  th:action="@{/create/motorcycle}"
+  th:method="post"
+  th:object="${motorcycleDTO}">
   <div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
     <div class="row mt-4">
       <div class="col">
@@ -24,8 +27,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Producer</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="producer" placeholder="Producer">
+            <input type="text" name="producer" th:field="*{producer}" th:errorclass="is-invalid" class="form-control" id="producer" placeholder="Producer">
             <label for="producer">Producer</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('producer')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -33,8 +41,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Model</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="model" placeholder="Model">
+            <input type="text" name="model" th:field="*{model}" th:errorclass="is-invalid" class="form-control" id="model" placeholder="Model">
             <label for="model">Model</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('model')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -44,8 +57,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Cubic Liters</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="cubicLiters" placeholder="Cubic Liters">
+            <input type="text" name="cubicLiters" th:field="*{cubicLiters}" th:errorclass="is-invalid" class="form-control" id="cubicLiters" placeholder="Cubic Liters">
             <label for="cubicLiters">Cubic Liters</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('cubicLiters')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -53,8 +71,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Production Date</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="productionDate" placeholder="Production Date">
+            <input type="date" name="productionDate" th:field="*{productionDate}" th:errorclass="is-invalid" class="form-control" id="productionDate" placeholder="Production Date">
             <label for="productionDate">Production Date</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('productionDate')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -64,8 +87,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Fuel Consumption</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="fuelConsumption" placeholder="Fuel Consumption">
+            <input type="number" name="fuelConsumption" th:field="*{fuelConsumption}" th:errorclass="is-invalid" step=".01" class="form-control" id="fuelConsumption" placeholder="Fuel Consumption">
             <label for="fuelConsumption">Fuel Consumption</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('fuelConsumption')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -73,28 +101,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Fuel Capacity</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="fuelCapacity" placeholder="Fuel Capacity">
+            <input type="number" name="fuelCapacity" th:field="*{fuelCapacity}" th:errorclass="is-invalid" step=".01" class="form-control" id="fuelCapacity" placeholder="Fuel Capacity">
             <label for="fuelCapacity">Fuel Capacity</label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-center justify-content-center mb-4">
-      <div class="col-12 col-md-10 col-lg-6">
-        <div class="input-group mb-3">
-          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Front Tire</span>
-          <div class="form-floating">
-            <input type="text" class="form-control" id="frontTire" placeholder="Front Tire">
-            <label for="frontTire">Front Tire</label>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-10 col-lg-6">
-        <div class="input-group mb-3">
-          <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Rear Tire</span>
-          <div class="form-floating">
-            <input type="text" class="form-control" id="rearTire" placeholder="Rear Tire">
-            <label for="rearTire">Rear Tire</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('fuelCapacity')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>
@@ -104,8 +117,20 @@
         <div class="input-group mb-3">
           <span class="input-group-text col-4 bg-dark text-white fw-bolder justify-content-center">Transmission</span>
           <div class="form-floating">
-            <input type="text" class="form-control" id="transmission" placeholder="Transmission">
-            <label for="transmission">Transmission</label>
+<!--            <label for="transmission">Transmission</label>-->
+            <select id="transmission" name="transmission" th:field="*{transmission}" th:errorclass="is-invalid" class="form-control pt-2">
+              <option value="" class="justify-content-center align-items-center">- Select transmission type -</option>
+              <option th:each="transmission : ${T(bg.BulgariaTripPlanner.model.TransmissionEnum).values()}"
+                      th:text="${transmission}"
+                      th:value="${transmission}"
+                      th:selected="${transmission} == *{transmission}"> Transmission type
+              </option>
+            </select>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('transmission')}"
+                      th:text="${error}"/>
+            </div>
           </div>
         </div>
       </div>

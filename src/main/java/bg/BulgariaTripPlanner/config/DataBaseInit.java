@@ -1,15 +1,13 @@
 package bg.BulgariaTripPlanner.config;
 
-import bg.BulgariaTripPlanner.model.Role;
-import bg.BulgariaTripPlanner.model.Roles;
-import bg.BulgariaTripPlanner.model.User;
+import bg.BulgariaTripPlanner.model.*;
 import bg.BulgariaTripPlanner.repository.RoleRepository;
+import bg.BulgariaTripPlanner.repository.TransmissionRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 @Component
 public class DataBaseInit implements CommandLineRunner {
@@ -17,11 +15,13 @@ public class DataBaseInit implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final TransmissionRepository transmissionRepository;
 
-    public DataBaseInit(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public DataBaseInit(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository, TransmissionRepository transmissionRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.transmissionRepository = transmissionRepository;
     }
 
     @Override
@@ -47,6 +47,14 @@ public class DataBaseInit implements CommandLineRunner {
                     .setLastName("Petrov")
                     .setUsername("D00ktora");
             userRepository.save(user);
+        }
+        if (transmissionRepository.count() == 0) {
+            Transmission automaticTransmission = new Transmission();
+            automaticTransmission.setType("Automatic").setTransmissionEnum(TransmissionEnum.Automatic);
+            Transmission manualTransmission = new Transmission();
+            manualTransmission.setType("Manual").setTransmissionEnum(TransmissionEnum.Manual);
+            transmissionRepository.save(automaticTransmission);
+            transmissionRepository.save(manualTransmission);
         }
     }
 }
