@@ -1,14 +1,13 @@
 package bg.BulgariaTripPlanner.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
     @NotNull
     private String username;
     private String firstName;
@@ -20,7 +19,7 @@ public class User extends BaseEntity {
     private String country;
     private String address;
     @Enumerated(value = EnumType.STRING)
-    @OneToMany
+    @ManyToMany
     private List<Role> roles;
     @ManyToOne
     private Motorcycle motorcycle;
@@ -36,7 +35,7 @@ public class User extends BaseEntity {
         return country;
     }
 
-    public User setCountry(String country) {
+    public UserEntity setCountry(String country) {
         this.country = country;
         return this;
     }
@@ -45,12 +44,12 @@ public class User extends BaseEntity {
         return address;
     }
 
-    public User setAddress(String address) {
+    public UserEntity setAddress(String address) {
         this.address = address;
         return this;
     }
 
-    public User setUsername(String username) {
+    public UserEntity setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -59,7 +58,7 @@ public class User extends BaseEntity {
         return firstName;
     }
 
-    public User setFirstName(String firstName) {
+    public UserEntity setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -68,7 +67,7 @@ public class User extends BaseEntity {
         return lastName;
     }
 
-    public User setLastName(String lastName) {
+    public UserEntity setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -77,7 +76,7 @@ public class User extends BaseEntity {
         return email;
     }
 
-    public User setEmail(String email) {
+    public UserEntity setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -86,7 +85,7 @@ public class User extends BaseEntity {
         return password;
     }
 
-    public User setPassword(String password) {
+    public UserEntity setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -95,7 +94,7 @@ public class User extends BaseEntity {
         return roles;
     }
 
-    public User setRoles(List<Role> roles) {
+    public UserEntity setRoles(List<Role> roles) {
         this.roles = roles;
         return this;
     }
@@ -104,7 +103,7 @@ public class User extends BaseEntity {
         return motorcycle;
     }
 
-    public User setMotorcycle(Motorcycle motorcycle) {
+    public UserEntity setMotorcycle(Motorcycle motorcycle) {
         this.motorcycle = motorcycle;
         return this;
     }
@@ -113,7 +112,7 @@ public class User extends BaseEntity {
         return trips;
     }
 
-    public User setTrips(List<Trip> trips) {
+    public UserEntity setTrips(List<Trip> trips) {
         this.trips = trips;
         return this;
     }
@@ -122,7 +121,7 @@ public class User extends BaseEntity {
         return active;
     }
 
-    public User setActive(boolean active) {
+    public UserEntity setActive(boolean active) {
         this.active = active;
         return this;
     }

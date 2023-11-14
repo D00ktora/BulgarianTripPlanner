@@ -7,7 +7,7 @@ import bg.BulgariaTripPlanner.dto.UserInfoDTO;
 import bg.BulgariaTripPlanner.model.MessageEntity;
 import bg.BulgariaTripPlanner.model.Role;
 import bg.BulgariaTripPlanner.model.Roles;
-import bg.BulgariaTripPlanner.model.User;
+import bg.BulgariaTripPlanner.model.UserEntity;
 import bg.BulgariaTripPlanner.repository.MessageRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public boolean register(RegisterDTO registerDTO) {
-        User mappedUser = modelMapper.map(registerDTO, User.class);
+        UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
         mappedUser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         Role role = new Role();
         role.setRole(Roles.User.toString());

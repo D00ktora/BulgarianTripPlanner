@@ -27,7 +27,7 @@ public class DataBaseInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (userRepository.count() == 0) {
-            User user = new User();
+            UserEntity user = new UserEntity();
             Role admin = new Role();
             admin.setRole(Roles.Admin.toString());
             admin.setRoleEnum(Roles.Admin);
