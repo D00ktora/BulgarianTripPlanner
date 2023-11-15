@@ -1,22 +1,16 @@
 package bg.BulgariaTripPlanner.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "roles")
 public class Role extends BaseEntity{
-    private String role;
+    @Enumerated(value = EnumType.STRING)
     private Roles roleEnum;
 
-    public String getRole() {
-        return role;
-    }
-
-    public Role setRole(String role) {
-        this.role = role;
-        return this;
-    }
 
     public Roles getRoleEnum() {
         return roleEnum;

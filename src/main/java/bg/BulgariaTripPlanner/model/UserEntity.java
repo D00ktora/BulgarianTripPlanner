@@ -3,6 +3,7 @@ package bg.BulgariaTripPlanner.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,13 +19,17 @@ public class UserEntity extends BaseEntity {
     private String password;
     private String country;
     private String address;
-    @Enumerated(value = EnumType.STRING)
-    @ManyToMany
-    private List<Role> roles;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> roles = new ArrayList<>();
     @ManyToOne
     private Motorcycle motorcycle;
     @OneToMany
-    private List<Trip> trips;
+    private List<Trip> trips = new ArrayList<>();
     private boolean active = false;
 
     public String getUsername() {

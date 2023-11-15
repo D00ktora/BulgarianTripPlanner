@@ -9,10 +9,13 @@ import bg.BulgariaTripPlanner.model.Role;
 import bg.BulgariaTripPlanner.model.Roles;
 import bg.BulgariaTripPlanner.model.UserEntity;
 import bg.BulgariaTripPlanner.repository.MessageRepository;
+import bg.BulgariaTripPlanner.repository.RoleRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -21,20 +24,24 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final MessageRepository messageRepository;
+    private final RoleRepository roleRepository;
 
-    public UserService(ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRepository userRepository, MessageRepository messageRepository) {
+    public UserService(ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRepository userRepository, MessageRepository messageRepository, RoleRepository roleRepository) {
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.messageRepository = messageRepository;
+        this.roleRepository = roleRepository;
     }
 
     public boolean register(RegisterDTO registerDTO) {
         UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
         mappedUser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-        Role role = new Role();
-        role.setRole(Roles.User.toString());
-        role.setRoleEnum(Roles.User);
+        Role user = roleRepository.findById(1l).orElse(null);
+        if (user == null) {
+            return false;
+        }
+        mappedUser.setRoles(List.of(user));
         userRepository.save(mappedUser);
         return this.userRepository.findByEmail(registerDTO.getEmail()).isPresent();
     }

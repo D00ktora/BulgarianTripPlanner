@@ -29,12 +29,10 @@ public class DataBaseInit implements CommandLineRunner {
         if (userRepository.count() == 0) {
             UserEntity user = new UserEntity();
             Role admin = new Role();
-            admin.setRole(Roles.Admin.toString());
-            admin.setRoleEnum(Roles.Admin);
+            admin.setRoleEnum(Roles.ADMIN);
             roleRepository.save(admin);
             Role userRole = new Role();
-            userRole.setRole(Roles.User.toString());
-            userRole.setRoleEnum(Roles.User);
+            userRole.setRoleEnum(Roles.USER);
             roleRepository.save(userRole);
             List<Role> allRoles = roleRepository.findAll();
             user.setRoles(allRoles);
