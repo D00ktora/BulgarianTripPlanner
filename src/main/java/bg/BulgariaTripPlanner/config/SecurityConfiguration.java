@@ -52,8 +52,6 @@ public class SecurityConfiguration {
                 }
         ).build();
 
-        //// TODO: 14.11.23 Remember me
-
     }
 
     @Bean
