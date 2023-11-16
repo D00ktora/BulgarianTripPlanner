@@ -37,7 +37,7 @@ public class UserService {
     public boolean register(RegisterDTO registerDTO) {
         UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
         mappedUser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-        Role user = roleRepository.findById(1l).orElse(null);
+        Role user = roleRepository.findById(2l).orElse(null);
         if (user == null) {
             return false;
         }
