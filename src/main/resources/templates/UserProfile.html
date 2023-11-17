@@ -22,25 +22,7 @@
     <div class="col-sm-12 col-md-4 me-2 text-white">
       <div class="row border border-white border-2 rounded-4 align-self-center mb-2">
         <div class="col-12 text-center">
-          <p class="h1">UserName</p>
-          <form th:action="@{/users/profile}"
-              th:method="post"
-              th:object="${fileUploadModel}"
-              enctype="multipart/form-data">
-            <div class="d-flex justify-content-center mb-4">
-              <img id="selectedAvatar" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                  class="rounded-circle" style="width: 200px; height: 200px; object-fit: cover;" alt="example placeholder" />
-            </div>
-            <div class="d-flex justify-content-center">
-              <div class="btn btn-outline-light btn-lg">
-                <label class="form-label m-1" for="customFile2">Choose file</label>
-                <input type="file" name="img" th:field="*{img}" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedAvatar')" />
-              </div>
-            </div>
-            <div>
-              <input class="btn btn-outline-light btn-lg" type="submit" th:value="Submit">
-            </div>
-          </form>
+          <p class="h1" th:text="${userInfo.fullName()}">UserName</p>
         </div>
       </div>
       <div class="row border border-white border-2 rounded-4 align-self-center">
@@ -79,7 +61,7 @@
           <p class="h5 text-white-50 text-end justify-content-center text-decoration-underline">Full Name</p>
         </div>
         <div class="col-7">
-          <p class="h5">Stilyan Petrov</p>
+          <p class="h5" th:text="${userInfo.fullName()}">Stilyan Petrov</p>
         </div>
       </div>
       <div class="row m-4">
@@ -87,7 +69,8 @@
           <p class="h5 text-white-50 text-end justify-content-center text-decoration-underline">Country</p>
         </div>
         <div class="col-7">
-          <p class="h5">Bulgaria</p>
+          <p class="h5" th:if="${userInfo.country == null}" th:text="${userInfo.country}"></p>
+          <p class="h5" th:unless="${userInfo.country == null}" th:text="${userInfo.country}"></p>
         </div>
       </div>
       <div class="row m-4">
@@ -95,7 +78,8 @@
           <p class="h5 text-white-50 text-end justify-content-center text-decoration-underline">Address</p>
         </div>
         <div class="col-7">
-          <p class="h5">Ruse</p>
+          <p class="h5" th:if="${userInfo.address == null}" th:text="${userInfo.address}"></p>
+          <p class="h5" th:unless="${userInfo.address == null}" th:text="${userInfo.address}"></p>
         </div>
       </div>
       <div class="row m-4">
@@ -103,7 +87,8 @@
           <p class="h5 text-white-50 text-end justify-content-center text-decoration-underline">Motorcycle</p>
         </div>
         <div class="col-7">
-          <p class="h5">Suziku</p>
+          <p class="h5" th:if="${userInfo.getMotorcycle() == null}" th:text="${userInfo.getMotorcycle()}">Suziku</p>
+          <p class="h5" th:unless="${userInfo.getMotorcycle() == null}" th:text="${userInfo.getMotorcycle().info()}">Suziku</p>
         </div>
       </div>
       <div class="row m-4">
@@ -111,7 +96,8 @@
           <p class="h5 text-white-50 text-end justify-content-center text-decoration-underline">Level</p>
         </div>
         <div class="col-7">
-          <p class="h5">1</p>
+          <p class="h5" th:if="${userInfo.level == null}" th:text="${userInfo.level}"></p>
+          <p class="h5" th:unless="${userInfo.level == null}" th:text="${userInfo.level}"></p>
         </div>
       </div>
       <div class="row m-4">
@@ -119,7 +105,8 @@
           <p class="h5 text-white-50 text-end justify-content-center text-decoration-underline">Trips Count</p>
         </div>
         <div class="col-7">
-          <p class="h5">0</p>
+          <p class="h5" th:if="${userInfo.tripCount == null}" th:text="${userInfo.tripCount}"></p>
+          <p class="h5" th:unless="${userInfo.tripCount == null}" th:text="${userInfo.tripCount}"></p>
         </div>
       </div>
     </div>

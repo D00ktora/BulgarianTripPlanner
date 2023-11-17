@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-4 me-2 text-white">
+    <div class="col-sm-12 col-md-4 me-2 text-white" th:object="${motorcycles}">
       <div class="row border border-white border-2 rounded-4 align-self-center mb-2">
         <div class="col-12 text-center">
           <p class="h1">UserName</p>
@@ -51,29 +51,28 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-7 text-white border border-2 border-white rounded-4">
+      <div class="col-12 col-md-7 text-white border border-2 border-white rounded-4">
       <div class="row mb-2 mb-md-5">
         <div class="col-12">
           <p class="h1 text-center fw-bolder mt-4">Choose Motorcycle</p>
         </div>
       </div>
-      <select class="form-select form-select-lg mt-sm-0 mt-md-5  mb-3" aria-label="Large select example">
-        <option selected>- Select Producer -</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <form th:action="@{/users/profile/motorcycle}"
+            th:method="post"
+            th:object="${motorcycleDTO}">
+        <select class="form-select form-select-lg mb-3" th:field="${motorcycleDTO.producer}" aria-label="Large select example">
+          <option th:each="motor : ${motorcycles.motorcyclesDTOList}"
+                  th:text="${motor.info()}"
+                  th:value="${motor.info()}"
+                  th:selected="${motor.info()} == *{info()}"> Transmission type
+          </option>
       </select>
-      <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option selected>- Select Model -</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <div class="row">
-        <div class="col text-center">
-          <button type="submit" class="btn btn-outline-light btn-lg w-100 mb-3">Save</button>
+          <div class="row">
+          <div class="col text-center">
+            <button type="submit" class="btn btn-outline-light btn-lg w-100 mb-3">Save</button>
+          </div>
         </div>
-      </div>
+      </form>
       <a class="btn btn-outline-light btn-lg w-100 mb-3" href="/create/motorcycle" role="button">Create Motorcycle</a>
 <!--      <button type="button" class="btn btn-outline-light btn-lg w-100 mb-3">Create Motorcycle</button>-->
     </div>

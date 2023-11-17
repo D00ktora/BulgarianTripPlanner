@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<form
+        th:action="@{/register}"
+        th:method="post"
+        th:object="${registerDTO}">
+  <div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
+
+    <div class="row mt-4">
+      <div class="col">
+        <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Register</p>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-8">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center">Username</span>
+          <div class="form-floating">
+            <input type="text"
+                    class="form-control"
+                    name="username"
+                    th:field="*{username}"
+                    th:errorclass="is-invalid"
+                    id="username"
+                    placeholder="Username">
+            <label for="username">Username</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('username')}"
+                      th:text="${error}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-8">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center">Email</span>
+          <div class="form-floating">
+            <input type="email"
+                    class="form-control"
+                    id="floatingInputGroup2"
+                    placeholder="Email"
+                    name="email"
+                    th:field="*{email}"
+                    th:errorclass="is-invalid">
+            <label for="floatingInputGroup2">Email</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('email')}"
+                      th:text="${error}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-8">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center">Password</span>
+          <div class="form-floating">
+            <input type="password"
+                  class="form-control"
+                  id="floatingInputGroup3"
+                  placeholder="Password"
+                  name="password"
+                  th:field="*{password}"
+                  th:errorclass="is-invalid">
+            <label for="floatingInputGroup3">Password</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('password')}"
+                      th:text="${error}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-12 col-md-8">
+        <div class="input-group mb-3">
+          <span class="input-group-text col-3 bg-dark text-white fw-bolder justify-content-center align-items-center text-wrap">Confirm Password</span>
+          <div class="form-floating">
+            <input type="password" name="confirmPassword" th:field="*{confirmPassword}" th:errorclass="is-invalid" class="form-control" id="floatingInputGroup4" placeholder="Confirm Password">
+            <label for="floatingInputGroup4">Confirm Password</label>
+            <div class="invalid-feedback errors alert alert-danger">
+              <div
+                      th:each="error : ${#fields.errors('confirmPassword')}"
+                      th:text="${error}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center text-center mb-3">
+      <div class="col-12 col-md-8">
+        <button type="submit" class="btn btn-outline-light btn-lg w-50">Register</button>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-12 col-md-8 text-white fw-bolder">
+        Already have an account? <a class="link-light" href="/login">Login</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>

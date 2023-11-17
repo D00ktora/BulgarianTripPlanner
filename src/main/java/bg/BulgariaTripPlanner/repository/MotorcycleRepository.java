@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MotorcycleRepository extends JpaRepository<Motorcycle, Long> {
+    Motorcycle findByProducerAndModel(String producer, String model);
 }

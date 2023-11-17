@@ -1,12 +1,32 @@
 package bg.BulgariaTripPlanner.dto;
 
 public class UserInfoDTO {
+    private String email;
     private String firstName;
     private String lastName;
     private String country;
     private String address;
     private Integer level;
     private Integer tripCount;
+    private MotorcycleDTO motorcycle;
+
+    public MotorcycleDTO getMotorcycle() {
+        return motorcycle;
+    }
+
+    public UserInfoDTO setMotorcycle(MotorcycleDTO motorcycle) {
+        this.motorcycle = motorcycle;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public UserInfoDTO setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 
     public String getFirstName() {
         return firstName;

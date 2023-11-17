@@ -1,17 +1,16 @@
 package bg.BulgariaTripPlanner.service;
 
-import bg.BulgariaTripPlanner.dto.LoginDTO;
-import bg.BulgariaTripPlanner.dto.MessageDTO;
-import bg.BulgariaTripPlanner.dto.RegisterDTO;
-import bg.BulgariaTripPlanner.dto.UserInfoDTO;
+import bg.BulgariaTripPlanner.dto.*;
 import bg.BulgariaTripPlanner.model.MessageEntity;
+import bg.BulgariaTripPlanner.model.Motorcycle;
 import bg.BulgariaTripPlanner.model.Role;
-import bg.BulgariaTripPlanner.model.Roles;
 import bg.BulgariaTripPlanner.model.UserEntity;
 import bg.BulgariaTripPlanner.repository.MessageRepository;
+import bg.BulgariaTripPlanner.repository.MotorcycleRepository;
 import bg.BulgariaTripPlanner.repository.RoleRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +24,15 @@ public class UserService {
     private final UserRepository userRepository;
     private final MessageRepository messageRepository;
     private final RoleRepository roleRepository;
+    private final MotorcycleRepository motorcycleRepository;
 
-    public UserService(ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRepository userRepository, MessageRepository messageRepository, RoleRepository roleRepository) {
+    public UserService(ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRepository userRepository, MessageRepository messageRepository, RoleRepository roleRepository, MotorcycleRepository motorcycleRepository) {
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.messageRepository = messageRepository;
         this.roleRepository = roleRepository;
+        this.motorcycleRepository = motorcycleRepository;
     }
 
     public boolean register(RegisterDTO registerDTO) {
@@ -64,9 +65,36 @@ public class UserService {
         return true;
     }
 
-    public UserInfoDTO getUserInfo() {
-        // TODO: 13.11.23 To implement this when run tru SECURITY!!!
-        // UserInfoDTO is created, all fields are done, only thing that left is to run thru security and get the correct user.
-        return null;
+    public UserInfoDTO getUserInfo(UserDetails userDetails) {
+        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        if (userEntity == null) {
+            return null;
+        }
+
+        UserInfoDTO mapped = modelMapper.map(userEntity, UserInfoDTO.class);
+        Motorcycle motorcycle = userEntity.getMotorcycle();
+        if (motorcycle == null) {
+            return mapped;
+        }
+        MotorcycleDTO motorcycleDTO = modelMapper.map(userEntity.getMotorcycle(), MotorcycleDTO.class);
+        mapped.setMotorcycle(motorcycleDTO);
+
+        return mapped;
+    }
+
+    public boolean setMotorcycle(UserDetails userDetails, MotorcycleDTO motorcycleDTO) {
+        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        if (userEntity == null) {
+            return false;
+        }
+        String producer = motorcycleDTO.getProducer().split(" ")[0];
+        String model = motorcycleDTO.getProducer().split(" ")[1];
+        Motorcycle byProducerAndModel = motorcycleRepository.findByProducerAndModel(producer, model);
+        if (byProducerAndModel == null) {
+            return false;
+        }
+        userEntity.setMotorcycle(byProducerAndModel);
+        userRepository.save(userEntity);
+        return true;
     }
 }

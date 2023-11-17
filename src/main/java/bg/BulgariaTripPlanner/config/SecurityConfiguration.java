@@ -25,7 +25,7 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequest -> authorizeRequest
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/login", "/register", "/contacts").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/contacts", "/login-error").permitAll()
                         .requestMatchers("/admin/comments", "/admin/delete").hasRole(Roles.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(
@@ -35,7 +35,8 @@ public class SecurityConfiguration {
                             .usernameParameter("email")
                             .passwordParameter("password")
                             .defaultSuccessUrl("/home")
-                            .failureForwardUrl("/login");
+                            .failureUrl("/login-error")
+                            .failureForwardUrl("/login-error");
                 }
         ).logout(
                 logout -> {

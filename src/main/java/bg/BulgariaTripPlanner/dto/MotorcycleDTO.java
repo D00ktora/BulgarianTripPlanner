@@ -24,6 +24,10 @@ public class MotorcycleDTO {
     @NotBlank(message = "Transmission type is required.")
     private String transmission;
 
+    public String  info() {
+        return this.producer + " " + this.model;
+    }
+
     public String getProducer() {
         return producer;
     }
