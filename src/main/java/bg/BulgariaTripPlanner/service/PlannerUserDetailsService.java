@@ -30,7 +30,6 @@ public class PlannerUserDetailsService implements UserDetailsService {
     private static UserDetails map(UserEntity user) {
         return User.withUsername(user.getUsername())
                 .password(user.getPassword())
-//                .authorities(List.of())
                 .authorities(user.getRoles().stream().map(PlannerUserDetailsService::mapRoles).toList()) //// TODO: 14.11.23 add roles
                 .build();
     }

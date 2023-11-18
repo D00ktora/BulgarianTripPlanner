@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfiguration {
     private final String rememberMeKey;
-    public SecurityConfiguration(@Value("${plannerApp.remember.me.key}") String rememberMeKey) {
+    public SecurityConfiguration(@Value("${Planner.remember.me.key}") String rememberMeKey) {
         this.rememberMeKey = rememberMeKey;
     }
 
@@ -35,7 +35,6 @@ public class SecurityConfiguration {
                             .usernameParameter("email")
                             .passwordParameter("password")
                             .defaultSuccessUrl("/home")
-                            .failureUrl("/login-error")
                             .failureForwardUrl("/login-error");
                 }
         ).logout(
@@ -47,7 +46,7 @@ public class SecurityConfiguration {
                 }
         ).rememberMe(
                 rememberMe -> {
-                    rememberMe.key(rememberMeKey)
+                    rememberMe.key(this.rememberMeKey)
                             .rememberMeParameter("rememberMe")
                             .rememberMeCookieName("rememberMe");
                 }

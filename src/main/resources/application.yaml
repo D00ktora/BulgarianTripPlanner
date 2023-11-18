@@ -10,5 +10,5 @@ spring:
     hibernate:
       ddl-auto: update
 
-plannerApp:
+Planner:
   remember.me.key: ${REMEMBER_ME_KEY:topsecter}

@@ -28,11 +28,6 @@ public class UserController {
         this.motorcycleService = motorcycleService;
     }
 
-    @ModelAttribute("fileUploadModel")
-    public FileUploadModel initRegisterDTO() {
-        return new FileUploadModel();
-    }
-
     @ModelAttribute("motorcycleDTO")
     public MotorcycleDTO initMotorcycleDTO() {
         return new MotorcycleDTO();
