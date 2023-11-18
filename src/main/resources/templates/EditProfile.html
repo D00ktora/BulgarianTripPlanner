@@ -22,8 +22,7 @@
     <div class="col-sm-12 col-md-4 me-2 text-white">
       <div class="row border border-white border-2 rounded-4 align-self-center mb-2">
         <div class="col-12 text-center">
-          <p class="h1">UserName</p>
-          <img src="#" alt="#" class="img-fluid">
+          <p class="h1" th:text="${userInfo.username}">UserName</p>
         </div>
       </div>
       <div class="row border border-white border-2 rounded-4 align-self-center">
@@ -52,58 +51,73 @@
       </div>
     </div>
     <div class="col-12 col-md-7 text-white border border-2 border-white rounded-4">
-      <div class="row">
-        <div class="col-12">
-          <p class="h1 text-center fw-bolder mt-4">Edit Profile</p>
+      <form th:action="@{/users/profile/edit}"
+      th:method="post"
+      th:object="${editProfileDTO}">
+        <div class="row">
+          <div class="col-12">
+            <p class="h1 text-center fw-bolder mt-4">Edit Profile</p>
+          </div>
         </div>
-      </div>
-      <div class="row mb-4 mt-4">
-        <div class="col-12">
-          <div class="row">
-            <div class="col">
-              <label for="username" class="form-label h4">Username</label>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="username">
-            </div>
-            <div class="col">
-              <label for="firstName" class="form-label h4">First Name</label>
-              <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" id="firstName">
+        <div class="row mb-4 mt-4">
+          <div class="col-12">
+            <div class="row">
+              <div class="col">
+                <label for="username" class="form-label h4">Username</label>
+                <input type="text" name="username" th:field="*{username}" th:errorclass="is-invalid" class="form-control" placeholder="Username" aria-label="Username" id="username">
+                <div class="invalid-feedback errors alert alert-danger">
+                  <div
+                          th:each="error : ${#fields.errors('username')}"
+                          th:text="${error}"/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row mb-4 mt-4">
-        <div class="col-12">
-          <div class="row">
-            <div class="col">
-              <label for="lastName" class="form-label h4">Last Name</label>
-              <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" id="lastName">
-            </div>
-            <div class="col">
-              <label for="email" class="form-label h4">Email</label>
-              <input type="text" class="form-control" placeholder="Email" aria-label="Email" id="email">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-4 bt-4">
-        <div class="col-12">
-          <div class="row">
-            <div class="col">
-              <label for="country" class="form-label h4">Country</label>
-              <input type="text" class="form-control" placeholder="Country" aria-label="Country" id="country">
-            </div>
-            <div class="col">
-              <label for="city" class="form-label h4">City</label>
-              <input type="text" class="form-control" placeholder="City" aria-label="City" id="city">
+        <div class="row mb-4 mt-4">
+          <div class="col-12">
+            <div class="row">
+              <div class="col">
+                <label for="firstName" class="form-label h4">First Name</label>
+                <input type="text" name="firstName" th:field="*{firstName}" th:errorclass="is-invalid" class="form-control" placeholder="First Name" aria-label="First Name" id="firstName">
+                <div class="invalid-feedback errors alert alert-danger">
+                  <div
+                          th:each="error : ${#fields.errors('firstName')}"
+                          th:text="${error}"/>
+                </div>
+              </div>
+              <div class="col">
+                <label for="lastName" class="form-label h4">Last Name</label>
+                <input type="text" name="lastName" th:field="*{lastName}" th:errorclass="is-invalid" class="form-control" placeholder="Last Name" aria-label="Last Name" id="lastName">
+                <div class="invalid-feedback errors alert alert-danger">
+                  <div
+                          th:each="error : ${#fields.errors('lastName')}"
+                          th:text="${error}"/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col text-center">
-          <button type="submit" class="btn btn-outline-light btn-lg w-50 mb-3">Save</button>
+        <div class="row mb-4 bt-4">
+          <div class="col-12">
+            <div class="row">
+              <div class="col">
+                <label for="country" class="form-label h4">Country</label>
+                <input type="text" name="country" th:field="*{country}" class="form-control" placeholder="Country" aria-label="Country" id="country">
+              </div>
+              <div class="col">
+                <label for="address" class="form-label h4">Address</label>
+                <input type="text" name="address" th:field="*{address}" class="form-control" placeholder="Address" aria-label="address" id="address">
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col text-center">
+            <button type="submit" class="btn btn-outline-light btn-lg w-50 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

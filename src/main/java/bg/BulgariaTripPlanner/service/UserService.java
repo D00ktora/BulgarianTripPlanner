@@ -9,11 +9,18 @@ import bg.BulgariaTripPlanner.repository.MessageRepository;
 import bg.BulgariaTripPlanner.repository.MotorcycleRepository;
 import bg.BulgariaTripPlanner.repository.RoleRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -95,6 +102,36 @@ public class UserService {
         }
         userEntity.setMotorcycle(byProducerAndModel);
         userRepository.save(userEntity);
+        return true;
+    }
+
+    public boolean editProfile(EditProfileDTO editProfileDTO, UserDetails userDetails, HttpSession httpSession) {
+        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        if (userEntity == null) {
+            return false;
+        }
+        //set first name
+        if (editProfileDTO.getFirstName() != null) {
+            userEntity.setFirstName(editProfileDTO.getFirstName());
+        }
+        //set last name
+        if (editProfileDTO.getLastName() != null) {
+            userEntity.setLastName(editProfileDTO.getLastName());
+        }
+        //set username
+        if (editProfileDTO.getUsername() != null) {
+            userEntity.setUsername(editProfileDTO.getUsername());
+        }
+        //set country
+        if (editProfileDTO.getCountry() != null) {
+            userEntity.setCountry(editProfileDTO.getCountry());
+        }
+        //set address
+        if (editProfileDTO.getAddress() != null) {
+            userEntity.setAddress(editProfileDTO.getAddress());
+        }
+        userRepository.saveAndFlush(userEntity);
+        httpSession.invalidate();
         return true;
     }
 }
