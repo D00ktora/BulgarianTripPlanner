@@ -1,8 +1,6 @@
 package bg.BulgariaTripPlanner.web;
 
-import bg.BulgariaTripPlanner.dto.EditProfileDTO;
-import bg.BulgariaTripPlanner.dto.FileUploadModel;
-import bg.BulgariaTripPlanner.dto.MotorcycleDTO;
+import bg.BulgariaTripPlanner.dto.*;
 import bg.BulgariaTripPlanner.repository.UserRepository;
 import bg.BulgariaTripPlanner.service.FileService;
 import bg.BulgariaTripPlanner.service.MotorcycleService;
@@ -41,6 +39,13 @@ public class UserController {
     public EditProfileDTO initEditProfileDTO() {
         return new EditProfileDTO();
     }
+    @ModelAttribute("changePasswordDTO")
+    public ChangePasswordDTO initChangePasswordDTO() {
+        return new ChangePasswordDTO();
+    }
+    @ModelAttribute("changeEmailDTO")
+    public ChangeEmailDTO initChangeEmailDTO() {
+        return new ChangeEmailDTO();}
 
     @GetMapping("/users/profile")
     private String userProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
@@ -67,8 +72,9 @@ public class UserController {
         return "redirect:/users/profile";
     }
     @GetMapping("/users/profile/motorcycle")
-    public String editMotorcycle(Model model) {
+    public String editMotorcycle(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         model.addAttribute("motorcycles", motorcycleService.getAllMotorcycles());
+        model.addAttribute("userInfo", userService.getUserInfo(userDetails));
         return "AddMotorcycle";
     }
     @PostMapping("/users/profile/motorcycle")
@@ -80,9 +86,35 @@ public class UserController {
     public String changePassword() {
         return "ChangePassword";
     }
+    @PostMapping("/users/profile/change-password")
+    public String changePassword(@AuthenticationPrincipal UserDetails userDetails,
+                                    HttpSession httpSession,
+                                    @Valid ChangePasswordDTO changePasswordDTO,
+                                    BindingResult bindingResult,
+                                    RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors() || !userService.changePassword(userDetails, httpSession, changePasswordDTO)) {
+            redirectAttributes.addFlashAttribute("changePasswordDTO", changePasswordDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.changePasswordDTO", bindingResult);
+            return "redirect:/users/profile/change-password";
+        }
+        return "redirect:/users/profile";
+    }
     @GetMapping("/users/profile/change-email")
     public String changeEmail() {
         return "ChangeEmail";
+    }
+    @PostMapping("/users/profile/change-email")
+    public String changeEmail(@Valid ChangeEmailDTO changeEmailDTO,
+                                BindingResult bindingResult,
+                                RedirectAttributes redirectAttributes,
+                                @AuthenticationPrincipal UserDetails userDetails,
+                                HttpSession httpSession) {
+        if (bindingResult.hasErrors() || !userService.changeEmail(userDetails, httpSession, changeEmailDTO)) {
+            redirectAttributes.addFlashAttribute("changeEmailDTO", changeEmailDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.changeEmailDTO", bindingResult);
+            return "redirect:/users/profile/change-email";
+        }
+        return "redirect:/users/profile";
     }
 
     @GetMapping("/users/profile/reload")

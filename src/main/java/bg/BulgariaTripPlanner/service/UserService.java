@@ -95,7 +95,17 @@ public class UserService {
             return false;
         }
         String producer = motorcycleDTO.getProducer().split(" ")[0];
-        String model = motorcycleDTO.getProducer().split(" ")[1];
+        String[] s = motorcycleDTO.getProducer().split(" ");
+        String model = "";
+        for (int i = 0; i < s.length; i++) {
+            if (i == 0) {
+                continue;
+            }
+            model += s[i];
+            if (i != s.length - 1) {
+                model += " ";
+            }
+        }
         Motorcycle byProducerAndModel = motorcycleRepository.findByProducerAndModel(producer, model);
         if (byProducerAndModel == null) {
             return false;
@@ -131,6 +141,41 @@ public class UserService {
             userEntity.setAddress(editProfileDTO.getAddress());
         }
         userRepository.saveAndFlush(userEntity);
+        httpSession.invalidate();
+        return true;
+    }
+
+    public boolean changePassword(UserDetails userDetails, HttpSession httpSession, ChangePasswordDTO changePasswordDTO) {
+        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+
+        if (userEntity == null) {
+            return false;
+        }
+
+        boolean matches = passwordEncoder.matches(changePasswordDTO.getOldPassword(), userEntity.getPassword());
+        if (!matches) {
+            return false;
+        }
+
+        userEntity.setPassword(passwordEncoder.encode(changePasswordDTO.getNewPassword()));
+        userRepository.save(userEntity);
+        httpSession.invalidate();
+        return true;
+    }
+
+    public boolean changeEmail(UserDetails userDetails, HttpSession httpSession, ChangeEmailDTO changeEmailDTO) {
+        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        if (userEntity == null) {
+            return false;
+        }
+
+        String oldEmail = changeEmailDTO.getOldEmail();
+        if (!userEntity.getEmail().equals(oldEmail)) {
+            return false;
+        }
+
+        userEntity.setEmail(changeEmailDTO.getNewEmail());
+        userRepository.save(userEntity);
         httpSession.invalidate();
         return true;
     }

@@ -8,29 +8,59 @@
 </head>
 <body>
 
+<!-- Modal -->
+<div class="modal" tabindex="-1" id="myModal">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title ">Save Changes?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body alert alert-warning">
+        <p>In order to change your Email you will be automatically Logout. If you want to change it press "Save changes" button, or "Close" to not change them.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" id="the-submit" class="btn btn-primary"
+                onclick="document.getElementById('finish').click()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div>
   <nav th:replace="~{fragments/navbar}"></nav>
 </div>
 
 <div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
   <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Change Email</p>
-  <form>
+  <form th:action="@{/users/profile/change-email}"
+                    th:method="post"
+                    th:object="${changeEmailDTO}">
     <div class="row mb-3 justify-content-center">
       <label for="oldEmail" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">Old Email</label>
       <div class="col-sm-5">
-        <input type="password" class="form-control" id="oldEmail">
+        <input type="text" name="oldEmail" th:field="*{oldEmail}" th:errorclass="is-invalid" class="form-control" id="oldEmail">
       </div>
     </div>
     <div class="row mb-3 justify-content-center">
       <label for="newEmail" class="col-sm-2 col-md-2 col-lg-2 col-form-label text-white fw-bold text-center text-md-end">New Email</label>
       <div class="col-sm-5">
-        <input type="password" class="form-control" id="newEmail">
+        <input type="text" name="newEmail" th:field="*{newEmail}" th:errorclass="is-invalid" class="form-control" id="newEmail">
+        <div class="invalid-feedback errors alert alert-danger">
+          <div
+                  th:each="error : ${#fields.errors('newEmail')}"
+                  th:text="${error}"/>
+        </div>
       </div>
     </div>
     <div class="row mb-3 align-items-center justify-content-center">
       <div class="text-center">
         <button type="submit" class="btn btn-outline-light btn-lg w-50">Submit</button>
+        <button type="submit" id="finish" class="d-none btn btn-outline-light btn-lg w-50 mb-3" data-bs-toggle="modal" data-bs-target="#myModal">Save</button>
       </div>
+      <a class="btn btn-outline-light mt-2 col-1" href="/users/profile">Back</a>
     </div>
   </form>
 </div>
