@@ -73,7 +73,7 @@ public class UserService {
     }
 
     public UserInfoDTO getUserInfo(UserDetails userDetails) {
-        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
         if (userEntity == null) {
             return null;
         }
@@ -90,7 +90,7 @@ public class UserService {
     }
 
     public boolean setMotorcycle(UserDetails userDetails, MotorcycleDTO motorcycleDTO) {
-        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
         if (userEntity == null) {
             return false;
         }
@@ -146,7 +146,7 @@ public class UserService {
     }
 
     public boolean changePassword(UserDetails userDetails, HttpSession httpSession, ChangePasswordDTO changePasswordDTO) {
-        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
 
         if (userEntity == null) {
             return false;
@@ -164,7 +164,7 @@ public class UserService {
     }
 
     public boolean changeEmail(UserDetails userDetails, HttpSession httpSession, ChangeEmailDTO changeEmailDTO) {
-        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+        UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
         if (userEntity == null) {
             return false;
         }

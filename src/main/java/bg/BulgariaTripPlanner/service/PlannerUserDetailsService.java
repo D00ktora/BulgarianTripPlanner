@@ -28,7 +28,7 @@ public class PlannerUserDetailsService implements UserDetailsService {
     }
 
     private static UserDetails map(UserEntity user) {
-        return User.withUsername(user.getUsername())
+        return User.withUsername(user.getEmail())
                 .password(user.getPassword())
                 .authorities(user.getRoles().stream().map(PlannerUserDetailsService::mapRoles).toList()) //// TODO: 14.11.23 add roles
                 .build();
