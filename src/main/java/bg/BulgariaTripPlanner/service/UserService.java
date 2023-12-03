@@ -1,26 +1,16 @@
 package bg.BulgariaTripPlanner.service;
 
 import bg.BulgariaTripPlanner.dto.*;
-import bg.BulgariaTripPlanner.model.MessageEntity;
-import bg.BulgariaTripPlanner.model.Motorcycle;
-import bg.BulgariaTripPlanner.model.Role;
-import bg.BulgariaTripPlanner.model.UserEntity;
-import bg.BulgariaTripPlanner.repository.MessageRepository;
-import bg.BulgariaTripPlanner.repository.MotorcycleRepository;
-import bg.BulgariaTripPlanner.repository.RoleRepository;
-import bg.BulgariaTripPlanner.repository.UserRepository;
+import bg.BulgariaTripPlanner.model.*;
+import bg.BulgariaTripPlanner.repository.*;
 import jakarta.servlet.http.HttpSession;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,14 +22,18 @@ public class UserService {
     private final MessageRepository messageRepository;
     private final RoleRepository roleRepository;
     private final MotorcycleRepository motorcycleRepository;
+    private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final EmailService emailService;
 
-    public UserService(ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRepository userRepository, MessageRepository messageRepository, RoleRepository roleRepository, MotorcycleRepository motorcycleRepository) {
+    public UserService(ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRepository userRepository, MessageRepository messageRepository, RoleRepository roleRepository, MotorcycleRepository motorcycleRepository, ConfirmationTokenRepository confirmationTokenRepository, EmailService emailService) {
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.messageRepository = messageRepository;
         this.roleRepository = roleRepository;
         this.motorcycleRepository = motorcycleRepository;
+        this.confirmationTokenRepository = confirmationTokenRepository;
+        this.emailService = emailService;
     }
 
     public boolean register(RegisterDTO registerDTO) {
@@ -179,4 +173,54 @@ public class UserService {
         httpSession.invalidate();
         return true;
     }
+
+// From here start save of the user with email validation
+    public ResponseEntity<?> saveUser(RegisterDTO registerDTO) {
+
+        if (userRepository.existsByEmail(registerDTO.getEmail())) {
+            return ResponseEntity.badRequest().body("Error: Email is already in use!");
+        }
+
+        UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
+        mappedUser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
+        Role user = roleRepository.findById(2l).orElse(null);
+        mappedUser.setRoles(List.of(user));
+        userRepository.save(mappedUser);
+
+        //userRepository.save(user);
+
+        ConfirmationToken confirmationToken = new ConfirmationToken(mappedUser);
+
+        confirmationTokenRepository.save(confirmationToken);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(mappedUser.getEmail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setText("To confirm your account, please click here : "
+                +"http://localhost:8085/confirm-account?token="+confirmationToken.getConfirmationToken());
+        emailService.sendEmail(mailMessage);
+
+        System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
+
+        return ResponseEntity.ok("Verify email by the link sent on your email address");
+    }
+
+
+    public ResponseEntity<?> confirmEmail(String confirmationToken) {
+        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+
+        if(token != null)
+        {
+            UserEntity user = userRepository.findByEmail(token.getUser().getEmail()).orElse(null);
+            if (user == null) {
+                return ResponseEntity.badRequest().body("Error: Couldn't verify email");
+            }
+            user.setActive(true);
+            userRepository.save(user);
+            return ResponseEntity.ok("Email verified successfully!");
+        }
+        return ResponseEntity.badRequest().body("Error: Couldn't verify email");
+    }
+
+//Here is end email validation
 }

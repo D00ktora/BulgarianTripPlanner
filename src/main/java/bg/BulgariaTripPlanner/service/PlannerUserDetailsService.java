@@ -37,4 +37,5 @@ public class PlannerUserDetailsService implements UserDetailsService {
     private static GrantedAuthority mapRoles(Role role) {
         return new SimpleGrantedAuthority("ROLE_" + role.getRoleEnum().name());
     }
+
 }

@@ -1,4 +1,21 @@
 spring:
+
+
+  ###### Email Properties ######
+  #smtp mail properties
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: f.and.g.2019@gmail.com
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  #End Of Email Setup.
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/planner?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
@@ -12,3 +29,4 @@ spring:
 
 Planner:
   remember.me.key: ${REMEMBER_ME_KEY:topsecter}
+
