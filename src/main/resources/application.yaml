@@ -1,6 +1,4 @@
 spring:
-
-
   ###### Email Properties ######
   #smtp mail properties
   mail:
@@ -14,6 +12,7 @@ spring:
           auth: true
           starttls:
             enable: true
+
   #End Of Email Setup.
 
   datasource:

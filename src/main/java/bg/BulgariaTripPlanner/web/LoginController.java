@@ -29,15 +29,6 @@ public class LoginController {
         return "Login";
     }
 
-//    @PostMapping("/login")
-//    public String login(@Valid LoginDTO loginDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-//        if (bindingResult.hasErrors() || !userService.login(loginDTO)) {
-//            redirectAttributes.addFlashAttribute("loginDTO", loginDTO);
-//            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.loginDTO", bindingResult);
-//            return "redirect:/login";
-//        }
-//        return "redirect:/home";
-//    }
 
     @PostMapping("/login-error")
     private String loginError() {

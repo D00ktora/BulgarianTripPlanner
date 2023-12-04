@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpSession;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,9 +46,10 @@ public class UserService {
             return false;
         }
         mappedUser.setRoles(List.of(user));
-        userRepository.save(mappedUser);
+        emailService.sendRegistrationEmail(registerDTO);
         return this.userRepository.findByEmail(registerDTO.getEmail()).isPresent();
     }
+
 
     public boolean login(LoginDTO loginDTO) {
         if (userRepository.findByEmail(loginDTO.getEmail()).isPresent()) {
@@ -57,6 +60,7 @@ public class UserService {
         return false;
     }
 
+
     public boolean sendMessage(MessageDTO messageDTO) {
         MessageEntity mapped = modelMapper.map(messageDTO, MessageEntity.class);
         if (mapped.getEmail() == null) {
@@ -65,6 +69,7 @@ public class UserService {
         this.messageRepository.save(mapped);
         return true;
     }
+
 
     public UserInfoDTO getUserInfo(UserDetails userDetails) {
         UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
@@ -82,6 +87,7 @@ public class UserService {
 
         return mapped;
     }
+
 
     public boolean setMotorcycle(UserDetails userDetails, MotorcycleDTO motorcycleDTO) {
         UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
@@ -108,6 +114,7 @@ public class UserService {
         userRepository.save(userEntity);
         return true;
     }
+
 
     public boolean editProfile(EditProfileDTO editProfileDTO, UserDetails userDetails, HttpSession httpSession) {
         UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
@@ -139,6 +146,7 @@ public class UserService {
         return true;
     }
 
+
     public boolean changePassword(UserDetails userDetails, HttpSession httpSession, ChangePasswordDTO changePasswordDTO) {
         UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
 
@@ -157,6 +165,7 @@ public class UserService {
         return true;
     }
 
+
     public boolean changeEmail(UserDetails userDetails, HttpSession httpSession, ChangeEmailDTO changeEmailDTO) {
         UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
         if (userEntity == null) {
@@ -174,39 +183,8 @@ public class UserService {
         return true;
     }
 
-// From here start save of the user with email validation
-    public ResponseEntity<?> saveUser(RegisterDTO registerDTO) {
 
-        if (userRepository.existsByEmail(registerDTO.getEmail())) {
-            return ResponseEntity.badRequest().body("Error: Email is already in use!");
-        }
-
-        UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
-        mappedUser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-        Role user = roleRepository.findById(2l).orElse(null);
-        mappedUser.setRoles(List.of(user));
-        userRepository.save(mappedUser);
-
-        //userRepository.save(user);
-
-        ConfirmationToken confirmationToken = new ConfirmationToken(mappedUser);
-
-        confirmationTokenRepository.save(confirmationToken);
-
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mappedUser.getEmail());
-        mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8085/confirm-account?token="+confirmationToken.getConfirmationToken());
-        emailService.sendEmail(mailMessage);
-
-        System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
-
-        return ResponseEntity.ok("Verify email by the link sent on your email address");
-    }
-
-
-    public ResponseEntity<?> confirmEmail(String confirmationToken) {
+    public ResponseEntity<?> confirmEmail(String confirmationToken, UserDetails userDetails) {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
         if(token != null)
@@ -217,10 +195,21 @@ public class UserService {
             }
             user.setActive(true);
             userRepository.save(user);
-            return ResponseEntity.ok("Email verified successfully!");
+            return ResponseEntity.ok("Email verified successfully!" +
+                    "You can close this page now.");
         }
         return ResponseEntity.badRequest().body("Error: Couldn't verify email");
     }
 
-//Here is end email validation
+    public boolean isActive(UserDetails userDetails, HttpSession httpSession) {
+        UserEntity userEntity = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
+        if (userEntity == null) {
+            return false;
+        }
+        if (!userEntity.isActive()) {
+            httpSession.invalidate();
+            return false;
+        }
+        return true;
+    }
 }

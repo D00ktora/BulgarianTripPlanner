@@ -4,6 +4,8 @@ import bg.BulgariaTripPlanner.dto.MessageDTO;
 import bg.BulgariaTripPlanner.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +48,10 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String homePage() {
+    public String homePage(@AuthenticationPrincipal UserDetails userDetails, HttpSession httpSession) {
+        if (!userService.isActive(userDetails, httpSession)) {
+            return "redirect:/login-error";
+        }
         return "Home";
     }
 }
