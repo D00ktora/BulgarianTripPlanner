@@ -50,4 +50,24 @@ public class AdminService {
         }
         return false;
     }
+
+    public List<UserInfoDTO> getAllUnactiveUsers() {
+        List<UserEntity> all = userRepository.findAll();
+        List<UserInfoDTO> users = new ArrayList<>();
+        for (UserEntity userEntity : all) {
+            if (!userEntity.isActive()) {
+                UserInfoDTO userInfoDTO = modelMapper.map(userEntity, UserInfoDTO.class);
+                users.add(userInfoDTO);
+            }
+        }
+        return users;
+    }
+
+    public void activateUser(Long id) {
+        Optional<UserEntity> byId = userRepository.findById(id);
+        if (byId.isPresent()) {
+            byId.get().setActive(true);
+            userRepository.save(byId.get());
+        }
+    }
 }

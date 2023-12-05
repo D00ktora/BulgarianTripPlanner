@@ -38,8 +38,16 @@ public class AdminController {
     }
 
     @GetMapping("/admin/activate")
-    public String activateUsers() {
+    public String activateUsers(Model model) {
+        List<UserInfoDTO> allUnactiveUsers = adminService.getAllUnactiveUsers();
+        model.addAttribute("usersInfo", allUnactiveUsers);
         return "ActivateUsers";
+    }
+
+    @GetMapping("/admin/activate/{id}")
+    public String activateUser(@PathVariable Long id) {
+        adminService.activateUser(id);
+        return "redirect:/admin/activate";
     }
 
     @GetMapping("admin/delete/error/{id}")

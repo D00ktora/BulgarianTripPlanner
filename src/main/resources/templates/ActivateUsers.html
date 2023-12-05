@@ -23,17 +23,17 @@
                 <td class="border border-2 border-dark text-center">Last Name</td>
                 <td class="border border-2 border-dark text-center">Username</td>
                 <td class="border border-2 border-dark text-center">Email</td>
-                <td class="border border-2 border-dark text-center border-end-0">Delete</td>
+                <td class="border border-2 border-dark text-center border-end-0">Activate</td>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider" th:object="${usersInfo}" th:each="user : ${usersInfo}">
         <tr class="table-dark">
-            <td class="border border-white">1</td>
-            <td class="border border-white">Stilyan</td>
-            <td class="border border-white">Petrov</td>
-            <td class="border border-white">D00ktora</td>
-            <td class="border border-white">f.and.g.2019@gmail.com</td>
-            <td class="border border-white text-center"><button type="submit" class="btn btn-outline-light w-50">Delete</button></td>
+            <td class="border border-white"><small th:text="${user.id}"/></td>
+            <td class="border border-white"><small th:text="${user.firstName}"/></td>
+            <td class="border border-white"><small th:text="${user.lastName}"/></td>
+            <td class="border border-white"><small th:text="${user.username}"/></td>
+            <td class="border border-white"><small th:text="${user.email}"/></td>
+            <td class="border border-white text-center"><a type="button" th:href="@{/admin/activate/{id}(id=${user.id})}" class="btn btn-outline-light w-50">Activate</a></td>
         </tr>
         </tbody>
     </table>
