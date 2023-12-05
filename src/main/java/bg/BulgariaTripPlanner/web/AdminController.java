@@ -47,7 +47,7 @@ public class AdminController {
 
     @GetMapping("/admin/activate")
     public String activateUsers(Model model) {
-        List<UserInfoDTO> allUnactiveUsers = adminService.getAllUnactiveUsers();
+        List<UserInfoDTO> allUnactiveUsers = adminService.getAllUnActiveUsers();
         model.addAttribute("usersInfo", allUnactiveUsers);
         return "ActivateUsers";
     }

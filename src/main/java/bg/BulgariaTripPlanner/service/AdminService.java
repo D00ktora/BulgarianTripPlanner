@@ -40,20 +40,22 @@ public class AdminService {
     }
 
     public boolean deleteUser(Long id) {
+        if (id == 1) {
+            return false;
+        }
         Optional<UserEntity> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             Optional<ConfirmationToken> optionalConfirmationToken = confirmationTokenRepository.findByUserId(byId.get().getId());
             if (optionalConfirmationToken.isPresent()) {
                 confirmationTokenRepository.delete(optionalConfirmationToken.get());
             }
-            // TODO: 5.12.23 to test when this code is commented, if its work i need to delete it.
             userRepository.delete(byId.get());
             return true;
         }
         return false;
     }
 
-    public List<UserInfoDTO> getAllUnactiveUsers() {
+    public List<UserInfoDTO> getAllUnActiveUsers() {
         List<UserEntity> all = userRepository.findAll();
         List<UserInfoDTO> users = new ArrayList<>();
         for (UserEntity userEntity : all) {
