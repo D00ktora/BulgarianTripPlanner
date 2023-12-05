@@ -1,11 +1,14 @@
 package bg.BulgariaTripPlanner.service;
 
+import bg.BulgariaTripPlanner.dto.MessageDTO;
 import bg.BulgariaTripPlanner.dto.UserInfoDTO;
 import bg.BulgariaTripPlanner.model.ConfirmationToken;
+import bg.BulgariaTripPlanner.model.MessageEntity;
 import bg.BulgariaTripPlanner.model.UserEntity;
 import bg.BulgariaTripPlanner.repository.ConfirmationTokenRepository;
-import bg.BulgariaTripPlanner.repository.RoleRepository;
+import bg.BulgariaTripPlanner.repository.MessageRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
+import org.aspectj.bridge.Message;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +21,12 @@ public class AdminService {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final ConfirmationTokenRepository confirmationTokenRepository;
-    private final RoleRepository roleRepository;
-
-    public AdminService(ModelMapper modelMapper, UserRepository userRepository, ConfirmationTokenRepository confirmationTokenRepository, RoleRepository roleRepository) {
+    private final MessageRepository messageRepository;
+    public AdminService(ModelMapper modelMapper, UserRepository userRepository, ConfirmationTokenRepository confirmationTokenRepository, MessageRepository messageRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.confirmationTokenRepository = confirmationTokenRepository;
-        this.roleRepository = roleRepository;
+        this.messageRepository = messageRepository;
     }
 
     public List<UserInfoDTO> showUsers() {
@@ -40,10 +42,10 @@ public class AdminService {
     public boolean deleteUser(Long id) {
         Optional<UserEntity> byId = userRepository.findById(id);
         if (byId.isPresent()) {
-//            Optional<ConfirmationToken> optionalConfirmationToken = confirmationTokenRepository.findByUserId(byId.get().getId());
-//            if (optionalConfirmationToken.isPresent()) {
-//                confirmationTokenRepository.delete(optionalConfirmationToken.get());
-//            }
+            Optional<ConfirmationToken> optionalConfirmationToken = confirmationTokenRepository.findByUserId(byId.get().getId());
+            if (optionalConfirmationToken.isPresent()) {
+                confirmationTokenRepository.delete(optionalConfirmationToken.get());
+            }
             // TODO: 5.12.23 to test when this code is commented, if its work i need to delete it.
             userRepository.delete(byId.get());
             return true;
@@ -69,5 +71,20 @@ public class AdminService {
             byId.get().setActive(true);
             userRepository.save(byId.get());
         }
+    }
+
+    public List<MessageDTO> getAllMessages() {
+        List<MessageEntity> all = messageRepository.findAll();
+        List<MessageDTO> messageDTOList = new ArrayList<>();
+        for (MessageEntity message : all) {
+            MessageDTO mapped = modelMapper.map(message, MessageDTO.class);
+            messageDTOList.add(mapped);
+        }
+        return messageDTOList;
+    }
+
+    public void readMessage(Long id) {
+        Optional<MessageEntity> byId = messageRepository.findById(id);
+        byId.ifPresent(messageRepository::delete);
     }
 }

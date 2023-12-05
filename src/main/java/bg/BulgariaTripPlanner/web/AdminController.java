@@ -1,12 +1,12 @@
 package bg.BulgariaTripPlanner.web;
 
+import bg.BulgariaTripPlanner.dto.MessageDTO;
 import bg.BulgariaTripPlanner.dto.UserInfoDTO;
 import bg.BulgariaTripPlanner.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -18,9 +18,17 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/admin/comments")
-    public String approveComments() {
-        return "ApproveComments";
+    @GetMapping("/admin/messages")
+    public String approveComments(Model model) {
+        List<MessageDTO> allMessages = adminService.getAllMessages();
+        model.addAttribute("allMessages", allMessages);
+        return "Messages";
+    }
+
+    @GetMapping("/admin/messages/{id}")
+    public String readMassages(@PathVariable Long id) {
+        adminService.readMessage(id);
+        return "redirect:/admin/messages";
     }
     @GetMapping("/admin/delete")
     public String deleteUser(Model model) {

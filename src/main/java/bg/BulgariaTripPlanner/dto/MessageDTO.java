@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class MessageDTO {
+    private Long id;
     @NotBlank
     private String name;
     @NotBlank
@@ -13,6 +14,15 @@ public class MessageDTO {
     private String email;
     @NotBlank
     private String message;
+
+    public Long getId() {
+        return id;
+    }
+
+    public MessageDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getName() {
         return name;

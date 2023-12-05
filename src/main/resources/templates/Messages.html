@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<div class="container border border-white border-2 p-3 bg-black bg-opacity-50 rounded-5 position-absolute top-50 start-50 translate-middle" style="backdrop-filter: blur(3px)">
+  <p class="display-3 mb-5 justify-content-center text-white text-center fw-bold align-content-center text-decoration-underline">Messages</p>
+  <table class="table table-hover caption-top table-striped">
+    <caption class="text-white">List of users</caption>
+    <thead class="table-light">
+    <tr>
+      <td class="border border-2 border-dark text-center">Email</td>
+      <td class="border border-2 border-dark text-center">Comment</td>
+      <td class="border border-2 border-dark text-center border-end-0">Read</td>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider" th:object="${allMessages}" th:each="message : ${allMessages}">
+    <tr class="table-dark">
+      <td class="border border-white"><small th:text="${message.email}"/></td>
+      <td class="border border-white"><small th:text="${message.message}"/></td>
+      <td class="border border-white text-center"><a type="button" th:href="@{/admin/messages/{id}(id=${message.id})}" class="btn btn-outline-light w-50">Read</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
