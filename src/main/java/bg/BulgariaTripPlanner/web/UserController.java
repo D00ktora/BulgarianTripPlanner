@@ -1,8 +1,6 @@
 package bg.BulgariaTripPlanner.web;
 
 import bg.BulgariaTripPlanner.dto.*;
-import bg.BulgariaTripPlanner.repository.UserRepository;
-import bg.BulgariaTripPlanner.service.FileService;
 import bg.BulgariaTripPlanner.service.MotorcycleService;
 import bg.BulgariaTripPlanner.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.io.IOException;
 
 @Controller
 public class UserController {

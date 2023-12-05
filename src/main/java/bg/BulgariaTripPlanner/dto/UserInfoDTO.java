@@ -1,6 +1,7 @@
 package bg.BulgariaTripPlanner.dto;
 
 public class UserInfoDTO {
+    private Long id;
     private String username;
     private String email;
     private String firstName;
@@ -10,6 +11,15 @@ public class UserInfoDTO {
     private Integer level;
     private Integer tripCount;
     private MotorcycleDTO motorcycle;
+
+    public Long getId() {
+        return id;
+    }
+
+    public UserInfoDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getUsername() {
         return username;
