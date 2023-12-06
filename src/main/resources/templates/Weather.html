@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Weather Information</h2>
+                    <p>City: CityName</p>
+                    <p>Temperature: 25 &deg;C</p>
+                    <p>Description: Clear sky</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+
+<!--<div class="container mt-5">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-6 offset-md-3">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h2 class="card-title">Weather Information</h2>-->
+<!--                    <div id="weatherData">-->
+<!--                        &lt;!&ndash; Weather data will be displayed here &ndash;&gt;-->
+<!--                        <p>Loading...</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Bootstrap JS and dependencies (jQuery and Popper.js) &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+<!--&lt;!&ndash; Your custom JavaScript for fetching and updating weather data &ndash;&gt;-->
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const apiKey = '65aacm3GML0XWmGMwdxKQq9UUAWfvUGA';-->
+<!--        const cityKey = '50167'; // Replace with the AccuWeather city key for the desired location-->
+<!--        const apiUrl = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}`;-->
+
+<!--        // Fetch weather data-->
+<!--        fetch(apiUrl)-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                // Update the weatherData div with the fetched data-->
+<!--                document.getElementById('weatherData').innerHTML = `-->
+<!--            <p>City: ${data.Headline.Text}</p>-->
+<!--            <p>Temperature: ${data.DailyForecasts[0].Temperature.Maximum.Value} &deg;${data.DailyForecasts[0].Temperature.Maximum.Unit}</p>-->
+<!--            <p>Description: ${data.DailyForecasts[0].Day.IconPhrase}</p>-->
+<!--          `;-->
+<!--            })-->
+<!--            .catch(error => {-->
+<!--                console.error('Error fetching weather data:', error);-->
+<!--                document.getElementById('weatherData').innerHTML = '<p>Error fetching weather data</p>';-->
+<!--            });-->
+<!--    });-->
+<!--</script>-->
+
+<!--<script src="/js/bootstrap.bundle.js"></script>-->
+</body>
+</html>

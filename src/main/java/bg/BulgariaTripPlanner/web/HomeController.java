@@ -54,4 +54,9 @@ public class HomeController {
         }
         return "Home";
     }
+
+    @GetMapping("/weather")
+    public String weather() {
+        return "Weather";
+    }
 }

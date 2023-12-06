@@ -29,3 +29,11 @@ spring:
 Planner:
   remember.me.key: ${REMEMBER_ME_KEY:topsecter}
 
+weather.forecast:
+  schema: https
+  host: dataservice.accuweather.com
+  path: /locations/v1/cities/search
+  key: ${WEATHER_API_KEY}
+
+google.maps:
+  key: ${GOOGLE_API}
