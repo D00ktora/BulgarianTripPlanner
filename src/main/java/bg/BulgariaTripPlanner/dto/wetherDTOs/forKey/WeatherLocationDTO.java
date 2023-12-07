@@ -1,8 +1,6 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forKey;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class WeatherLocationDTO {
     private Integer Version;
@@ -17,7 +15,7 @@ public class WeatherLocationDTO {
     private TimeZone TimeZone;
     private GeoPosition GeoPosition;
     private boolean IsAlias;
-    private List<String> SupplementalAdminAreas;
+    private List<SupplementalAdminAreas > SupplementalAdminAreas;
     private List<String> DataSets;
 
     public Integer getVersion() {
@@ -74,47 +72,47 @@ public class WeatherLocationDTO {
         return this;
     }
 
-    public bg.BulgariaTripPlanner.dto.wetherDTOs.Region getRegion() {
+    public bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.Region getRegion() {
         return Region;
     }
 
-    public WeatherLocationDTO setRegion(bg.BulgariaTripPlanner.dto.wetherDTOs.Region region) {
+    public WeatherLocationDTO setRegion(bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.Region region) {
         Region = region;
         return this;
     }
 
-    public bg.BulgariaTripPlanner.dto.wetherDTOs.Country getCountry() {
+    public bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.Country getCountry() {
         return Country;
     }
 
-    public WeatherLocationDTO setCountry(bg.BulgariaTripPlanner.dto.wetherDTOs.Country country) {
+    public WeatherLocationDTO setCountry(bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.Country country) {
         Country = country;
         return this;
     }
 
-    public bg.BulgariaTripPlanner.dto.wetherDTOs.AdministrativeArea getAdministrativeArea() {
+    public bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.AdministrativeArea getAdministrativeArea() {
         return AdministrativeArea;
     }
 
-    public WeatherLocationDTO setAdministrativeArea(bg.BulgariaTripPlanner.dto.wetherDTOs.AdministrativeArea administrativeArea) {
+    public WeatherLocationDTO setAdministrativeArea(bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.AdministrativeArea administrativeArea) {
         AdministrativeArea = administrativeArea;
         return this;
     }
 
-    public bg.BulgariaTripPlanner.dto.wetherDTOs.TimeZone getTimeZone() {
+    public bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.TimeZone getTimeZone() {
         return TimeZone;
     }
 
-    public WeatherLocationDTO setTimeZone(bg.BulgariaTripPlanner.dto.wetherDTOs.TimeZone timeZone) {
+    public WeatherLocationDTO setTimeZone(bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.TimeZone timeZone) {
         TimeZone = timeZone;
         return this;
     }
 
-    public bg.BulgariaTripPlanner.dto.wetherDTOs.GeoPosition getGeoPosition() {
+    public bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.GeoPosition getGeoPosition() {
         return GeoPosition;
     }
 
-    public WeatherLocationDTO setGeoPosition(bg.BulgariaTripPlanner.dto.wetherDTOs.GeoPosition geoPosition) {
+    public WeatherLocationDTO setGeoPosition(bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.GeoPosition geoPosition) {
         GeoPosition = geoPosition;
         return this;
     }
@@ -128,11 +126,11 @@ public class WeatherLocationDTO {
         return this;
     }
 
-    public List<String> getSupplementalAdminAreas() {
+    public List<bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.SupplementalAdminAreas> getSupplementalAdminAreas() {
         return SupplementalAdminAreas;
     }
 
-    public WeatherLocationDTO setSupplementalAdminAreas(List<String> supplementalAdminAreas) {
+    public WeatherLocationDTO setSupplementalAdminAreas(List<bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.SupplementalAdminAreas> supplementalAdminAreas) {
         SupplementalAdminAreas = supplementalAdminAreas;
         return this;
     }

@@ -1,4 +1,5 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forKey;
+
 
 public class TimeZone {
     private String Code;

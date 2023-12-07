@@ -1,6 +1,6 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forKey;
 
-public class Metric {
+public class Imperial {
     private int Value;
     private String Unit;
     private int UnitType;
@@ -9,7 +9,7 @@ public class Metric {
         return Value;
     }
 
-    public Metric setValue(int value) {
+    public Imperial setValue(int value) {
         Value = value;
         return this;
     }
@@ -18,7 +18,7 @@ public class Metric {
         return Unit;
     }
 
-    public Metric setUnit(String unit) {
+    public Imperial setUnit(String unit) {
         Unit = unit;
         return this;
     }
@@ -27,7 +27,7 @@ public class Metric {
         return UnitType;
     }
 
-    public Metric setUnitType(int unitType) {
+    public Imperial setUnitType(int unitType) {
         UnitType = unitType;
         return this;
     }

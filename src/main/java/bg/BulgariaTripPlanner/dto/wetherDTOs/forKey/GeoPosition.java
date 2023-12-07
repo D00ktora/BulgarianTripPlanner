@@ -1,6 +1,7 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forKey;
 
-public class GeoPosition {
+
+public class GeoPosition  {
     private double Latitude;
     private double Longitude;
     private Elevation Elevation;
@@ -23,11 +24,11 @@ public class GeoPosition {
         return this;
     }
 
-    public bg.BulgariaTripPlanner.dto.wetherDTOs.Elevation getElevation() {
+    public bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.Elevation getElevation() {
         return Elevation;
     }
 
-    public GeoPosition setElevation(bg.BulgariaTripPlanner.dto.wetherDTOs.Elevation elevation) {
+    public GeoPosition setElevation(bg.BulgariaTripPlanner.dto.wetherDTOs.forKey.Elevation elevation) {
         Elevation = elevation;
         return this;
     }

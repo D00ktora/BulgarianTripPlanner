@@ -1,15 +1,15 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forDay;
 
-public class Imperial {
-    private int Value;
+public class Maximum {
+    private double Value;
     private String Unit;
     private int UnitType;
 
-    public int getValue() {
+    public double getValue() {
         return Value;
     }
 
-    public Imperial setValue(int value) {
+    public Maximum setValue(double value) {
         Value = value;
         return this;
     }
@@ -18,7 +18,7 @@ public class Imperial {
         return Unit;
     }
 
-    public Imperial setUnit(String unit) {
+    public Maximum setUnit(String unit) {
         Unit = unit;
         return this;
     }
@@ -27,7 +27,7 @@ public class Imperial {
         return UnitType;
     }
 
-    public Imperial setUnitType(int unitType) {
+    public Maximum setUnitType(int unitType) {
         UnitType = unitType;
         return this;
     }

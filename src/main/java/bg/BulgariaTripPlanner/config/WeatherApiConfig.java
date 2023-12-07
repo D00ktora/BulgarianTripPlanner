@@ -64,7 +64,7 @@ public class WeatherApiConfig {
         return this;
     }
 
-    public String getUrlTemplate() {
+    public String getUrlTemplateForLocationKey() {
         String URL = new StringBuilder().append(this.schema)
                 .append("://")
                 .append(this.host)
@@ -75,5 +75,14 @@ public class WeatherApiConfig {
         return URL;
     }
 
-    //http://dataservice.accuweather.com/locations/v1/cities/search?q=New%20York&apikey=YOUR_API_KEY
+    public String getUrlTemplateForDayForecast() {
+        String URL = new StringBuilder().append(this.schema)
+                .append("://")
+                .append(this.host)
+                .append("/forecasts/v1/daily/1day/50167") // only for Ruse Bulgaria.
+                //.append("?q=ruse") // TODO: 6.12.23 ruse to be change with city when i get it from the user. Require additional logic to find the city in Bulgaria and then to extract the correct key
+                .append("?apikey=")
+                .append(this.key).toString().trim();
+        return URL;
+    }
 }

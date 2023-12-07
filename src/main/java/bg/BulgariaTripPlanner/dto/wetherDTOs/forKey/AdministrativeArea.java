@@ -1,6 +1,8 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forKey;
+
 
 public class AdministrativeArea {
+
     private String ID;
     private String LocalizedName;
     private String EnglishName;

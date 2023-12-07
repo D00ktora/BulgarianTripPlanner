@@ -1,16 +1,16 @@
-package bg.BulgariaTripPlanner.dto.wetherDTOs;
+package bg.BulgariaTripPlanner.dto.wetherDTOs.forKey;
 
-public class Country {
-    private String ID;
+public class Suplement {
+    private int Level;
     private String LocalizedName;
     private String EnglishName;
 
-    public String getID() {
-        return ID;
+    public int getLevel() {
+        return Level;
     }
 
-    public Country setID(String ID) {
-        this.ID = ID;
+    public Suplement setLevel(int level) {
+        Level = level;
         return this;
     }
 
@@ -18,7 +18,7 @@ public class Country {
         return LocalizedName;
     }
 
-    public Country setLocalizedName(String localizedName) {
+    public Suplement setLocalizedName(String localizedName) {
         LocalizedName = localizedName;
         return this;
     }
@@ -27,7 +27,7 @@ public class Country {
         return EnglishName;
     }
 
-    public Country setEnglishName(String englishName) {
+    public Suplement setEnglishName(String englishName) {
         EnglishName = englishName;
         return this;
     }
