@@ -20,38 +20,38 @@
         <div class="collapse navbar-collapse justify-content-end flex-grow-0 me-5" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/home">Home</a></div>
+                    <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/home"><span th:text="#{homePage}"/></a></div>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/users/profile">Profile</a></div>
+                    <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/users/profile"><span th:text="#{profile}"/></a></div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-light btn-lg me-2" href="/contacts">Contacts</a>
+                    <a class="btn btn-outline-light btn-lg me-2" href="/contacts"><span th:text="#{contacts}"/></a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/weather">Weather</a></div>
+                    <div class="col-5"><a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/weather"><span th:text="#{weather}"/></a></div>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
                     <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Admin Panel
+                        <span th:text="#{adminPanel}"/>
                     </a>
                     <ul class="dropdown-menu btn btn-light m-lg-2">
-                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/messages">Messages</a></li>
+                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/messages"><span th:text="#{adminMassages}"/></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/delete">Delete User</a></li>
+                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/delete"><span th:text="#{deleteUser}"/></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/activate">Activate Users</a></li>
+                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/activate"><span th:text="#{activateUser}"/></a></li>
                     </ul>
                 </li>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/register">Register</a>
+                    <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/register"><span th:text="#{registerUser}"/></a>
                 </li>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/login">Login</a>
+                    <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/login"><span th:text="#{loginUser}"/></a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
-                        <input type="submit" class="btn btn-outline-light btn-lg me-2" aria-current="page" value="Logout"></input>
+                        <input type="submit" class="btn btn-outline-light btn-lg me-2" aria-current="page" th:value="#{logout}"></input>
                     </form>
                 </li>
             </ul>
