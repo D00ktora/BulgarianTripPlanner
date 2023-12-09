@@ -15,6 +15,5 @@ public class ActivationLinkCleanUpScheduler {
     @Scheduled(cron = "0 0 */12 * * *")
     public void cleanConfirmationTokens() {
         emailService.cleanConfirmationTokens();
-        System.out.println("Clear is performed");
     }
 }

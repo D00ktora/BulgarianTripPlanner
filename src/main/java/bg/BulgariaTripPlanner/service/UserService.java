@@ -41,13 +41,17 @@ public class UserService {
     public boolean register(RegisterDTO registerDTO) {
         UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
         mappedUser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-        Role user = roleRepository.findById(2l).orElse(null);
+        Role user = roleRepository.findById(2L).orElse(null);
         if (user == null) {
             return false;
         }
         mappedUser.setRoles(List.of(user));
         emailService.sendRegistrationEmail(registerDTO);
-        return this.userRepository.findByEmail(registerDTO.getEmail()).isPresent();
+        boolean present = this.userRepository.findByEmail(registerDTO.getEmail()).isPresent();
+        if (!present) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -80,7 +84,7 @@ public class UserService {
         UserInfoDTO mapped = modelMapper.map(userEntity, UserInfoDTO.class);
         Motorcycle motorcycle = userEntity.getMotorcycle();
         if (motorcycle == null) {
-            return mapped;
+            return null;
         }
         MotorcycleDTO motorcycleDTO = modelMapper.map(userEntity.getMotorcycle(), MotorcycleDTO.class);
         mapped.setMotorcycle(motorcycleDTO);

@@ -2,21 +2,22 @@ package bg.BulgariaTripPlanner.service;
 
 
 import bg.BulgariaTripPlanner.dto.RegisterDTO;
-import bg.BulgariaTripPlanner.model.ConfirmationToken;
-import bg.BulgariaTripPlanner.model.Role;
-import bg.BulgariaTripPlanner.model.UserEntity;
+import bg.BulgariaTripPlanner.model.*;
 import bg.BulgariaTripPlanner.repository.ConfirmationTokenRepository;
+import bg.BulgariaTripPlanner.repository.MotorcycleRepository;
 import bg.BulgariaTripPlanner.repository.RoleRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +31,18 @@ public class EmailService {
     private final ConfirmationTokenRepository confirmationTokenRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private MotorcycleRepository motorcycleRepository;
 
     public EmailService(JavaMailSender javaMailSender,
-                        @Value("${spring.mail.username}") String from, UserRepository userRepository, RoleRepository roleRepository, ConfirmationTokenRepository confirmationTokenRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+            @Value("${spring.mail.username}")
+                        String from,
+                        UserRepository userRepository,
+                        RoleRepository roleRepository,
+                        ConfirmationTokenRepository confirmationTokenRepository,
+                        ModelMapper modelMapper,
+                        PasswordEncoder passwordEncoder
+    ) {
         this.javaMailSender = javaMailSender;
         this.from = from;
         this.userRepository = userRepository;
@@ -42,12 +52,12 @@ public class EmailService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void sendRegistrationEmail(RegisterDTO registerDTO) {
+    public boolean sendRegistrationEmail(RegisterDTO registerDTO) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
 
         if (userRepository.existsByEmail(registerDTO.getEmail())) {
-            return;
+            return false;
         }
 
         UserEntity mappedUser = modelMapper.map(registerDTO, UserEntity.class);
@@ -71,6 +81,7 @@ public class EmailService {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+        return true;
     }
 
     public void cleanConfirmationTokens() {

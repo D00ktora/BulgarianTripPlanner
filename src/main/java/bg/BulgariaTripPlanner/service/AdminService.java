@@ -8,7 +8,6 @@ import bg.BulgariaTripPlanner.model.UserEntity;
 import bg.BulgariaTripPlanner.repository.ConfirmationTokenRepository;
 import bg.BulgariaTripPlanner.repository.MessageRepository;
 import bg.BulgariaTripPlanner.repository.UserRepository;
-import org.aspectj.bridge.Message;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

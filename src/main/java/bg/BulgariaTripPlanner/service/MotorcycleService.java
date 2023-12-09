@@ -3,6 +3,7 @@ package bg.BulgariaTripPlanner.service;
 import bg.BulgariaTripPlanner.dto.MotorcycleDTO;
 import bg.BulgariaTripPlanner.dto.MotorcyclesDTO;
 import bg.BulgariaTripPlanner.model.Motorcycle;
+import bg.BulgariaTripPlanner.model.Transmission;
 import bg.BulgariaTripPlanner.repository.MotorcycleRepository;
 import bg.BulgariaTripPlanner.repository.TransmissionRepository;
 import org.modelmapper.ModelMapper;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MotorcycleService {
@@ -28,12 +30,14 @@ public class MotorcycleService {
         if (mapped.getModel() == null) {
             return false;
         }
-        mapped.setTransmission(transmissionRepository.findByType(motorcycleDTO.getTransmission()).get());
+        Optional<Transmission> transmissionByType = transmissionRepository.findByType(motorcycleDTO.getTransmission());
+        if (transmissionByType.isPresent()) {
+            mapped.setTransmission(transmissionByType.get());
+        }
         if (mapped.getTransmission().getType() == null) {
             return false;
         }
         motorcycleRepository.save(mapped);
-
         return true;
     }
 

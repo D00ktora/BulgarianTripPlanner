@@ -1,4 +1,15 @@
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   ###### Email Properties ######
   #smtp mail properties
   mail:
@@ -15,27 +26,18 @@ spring:
 
   #End Of Email Setup.
 
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/planner?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
-    password: ${MY_PASSWORD}
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: update
 
 Planner:
-  remember.me.key: ${REMEMBER_ME_KEY:topsecter}
+  remember.me.key: topsicret
 
 weather.forecast:
   schema: https
   host: dataservice.accuweather.com
   path: /locations/v1/cities/search
-  key: ${WEATHER_API_KEY}
+  key: test
 
 google.maps:
-  key: ${GOOGLE_API}
+  key: test
 server:
   tomcat:
     uri-encoding: UTF-8
