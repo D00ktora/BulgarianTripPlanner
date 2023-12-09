@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Runtime Exception</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body>
+
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<div class="container">
+  <div class="row text-center align-items-center justify-content-center">
+    <div class="col-6 bg-secondary border border-2 border-black rounded rounded-2 bg-opacity-75">
+      <h1 class="h1 text-white">Something is technically wrong that`s why you are not able to see this page.</h1>
+      <h1 class="h1 text-white">Why don`t try again?. <b class="text-decoration-underline">This time check the URL that you type :)</b> </h1>
+      <h1 class="h1 text-white">If you see this message again, please contact us. You can navigate to <a class="text-decoration-none h1" th:href="@{/contacts}">Concat from</a>.</h1>
+
+    </div>
+    <div class="col-7 text-center align-items-center">
+      <img class="w-100" src="/images/palm-recognition.svg" alt="map-img">
+    </div>
+  </div>
+</div>
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>

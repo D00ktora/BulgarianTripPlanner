@@ -5,8 +5,11 @@ import bg.BulgariaTripPlanner.dto.UserInfoDTO;
 import bg.BulgariaTripPlanner.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -61,5 +64,11 @@ public class AdminController {
     @GetMapping("admin/delete/error/{id}")
     public String deleteError(@PathVariable Long id) {
         return "DeleteError";
+    }
+
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ModelAndView handleMethodTypeMismatch(MethodArgumentTypeMismatchException exception) {
+        return new ModelAndView("MethodArgumentTypeMismatchException");
     }
 }

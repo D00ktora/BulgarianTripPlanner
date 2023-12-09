@@ -198,7 +198,7 @@ public class UserService {
             return ResponseEntity.ok("Email verified successfully!" +
                     "You can close this page now.");
         }
-        return ResponseEntity.badRequest().body("Error: Couldn't verify email");
+        return ResponseEntity.badRequest().body("Error: Couldn't verify email. Please check your Email again.");
     }
 
     public boolean isActive(UserDetails userDetails, HttpSession httpSession) {

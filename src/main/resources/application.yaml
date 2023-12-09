@@ -1,8 +1,4 @@
 spring:
-  thymeleaf:
-    encoding: UTF-8
-  messages:
-    encoding: ISO-8859-1
   ###### Email Properties ######
   #smtp mail properties
   mail:
