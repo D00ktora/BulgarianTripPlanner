@@ -1,4 +1,8 @@
 spring:
+  thymeleaf:
+    encoding: UTF-8
+  messages:
+    encoding: ISO-8859-1
   ###### Email Properties ######
   #smtp mail properties
   mail:
@@ -37,3 +41,9 @@ weather.forecast:
 
 google.maps:
   key: ${GOOGLE_API}
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    encoding:
+      charset: UTF-8

@@ -17,6 +17,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -70,5 +71,16 @@ public class EmailService {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void cleanConfirmationTokens() {
+        List<ConfirmationToken> all = confirmationTokenRepository.findAll();
+        List<ConfirmationToken> forDeletion = new ArrayList<>();
+        for (ConfirmationToken confirmationToken : all) {
+            if (confirmationToken.getUser().isActive()) {
+                forDeletion.add(confirmationToken);
+            }
+        }
+        confirmationTokenRepository.deleteAllInBatch(forDeletion);
     }
 }

@@ -1,6 +1,7 @@
 // let map;
 // const biasInputElement = document.getElementById("use-location-bias");
 // const strictBoundsInputElement = document.getElementById("use-strict-bounds");
+//
 // async function initMap() {
 //     const { Map } = await google.maps.importLibrary("maps");
 //     const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -9,6 +10,7 @@
 //         lat: 43.835571,
 //         lng: 25.965654
 //     }
+//
 //     map = new Map(document.getElementById("map"), {
 //         center: { lat: 43.835571, lng: 25.965654 },
 //         zoom: 13,
@@ -22,9 +24,7 @@
 //
 // }
 //
-//
 // function calculateAndDisplayRoute(directionsRenderer, directionsService) {
-//
 //     var start = document.getElementById('from').value;
 //     var end = document.getElementById('to').value;
 //     var request = {

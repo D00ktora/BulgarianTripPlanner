@@ -43,6 +43,16 @@
                         <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/admin/activate"><span th:text="#{activateUser}"/></a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="btn btn-outline-light btn-lg me-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class="bi bi-translate"></i>
+                        <span th:text="#{changeLang}"/>
+                    </a>
+                    <ul class="dropdown-menu btn btn-light m-lg-2">
+                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/?lang=bg"><span th:text="#{changeLangToBG}"/></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item btn btn-outline-light btn-lg me-2" href="/?lang=en"><span th:text="#{changeLangToEN}"/></a></li>
+                    </ul>
+                </li>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="btn btn-outline-light btn-lg me-2" aria-current="page" href="/register"><span th:text="#{registerUser}"/></a>
                 </li>
