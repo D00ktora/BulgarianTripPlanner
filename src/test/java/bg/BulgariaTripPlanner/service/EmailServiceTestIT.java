@@ -81,4 +81,34 @@ public class EmailServiceTestIT {
         Optional<ConfirmationToken> byUserId = confirmationTokenRepository.findByUserId(byEmail.get().getId());
         Assertions.assertTrue(byUserId.isPresent());
     }
+
+    @Test
+    void testClearConfirmationTokens() {
+        RegisterDTO registerDTO1 = new RegisterDTO()
+                .setEmail("test@gmail.com")
+                .setUsername("testUsername")
+                .setPassword("testPassword")
+                .setConfirmPassword("testPassword");
+        RegisterDTO registerDTO2 = new RegisterDTO()
+                .setEmail("test1t@gmail.com")
+                .setUsername("test1Username")
+                .setPassword("testPassword1")
+                .setConfirmPassword("testPassword1");
+        Role roleAdmin = new Role().setRoleEnum(Roles.ADMIN);
+        Role roleUser = new Role().setRoleEnum(Roles.USER);
+        roleRepository.saveAndFlush(roleAdmin);
+        roleRepository.saveAndFlush(roleUser);
+        emailService.sendRegistrationEmail(registerDTO1);
+        emailService.sendRegistrationEmail(registerDTO2);
+        UserEntity userEntity = userRepository.findByEmail(registerDTO1.getEmail()).orElse(null);
+        userEntity.setActive(true);
+        UserEntity userEntity1 = userRepository.findByEmail(registerDTO2.getEmail()).orElse(null);
+        userEntity1.setActive(true);
+        userRepository.saveAndFlush(userEntity);
+        userRepository.saveAndFlush(userEntity1);
+        Assertions.assertEquals(3, userRepository.count());
+        Assertions.assertEquals(2, confirmationTokenRepository.count());
+        emailService.cleanConfirmationTokens();
+        Assertions.assertEquals(0, confirmationTokenRepository.count());
+    }
 }
