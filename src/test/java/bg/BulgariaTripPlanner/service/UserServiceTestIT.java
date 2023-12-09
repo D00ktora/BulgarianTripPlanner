@@ -69,4 +69,7 @@ public class UserServiceTestIT {
         userService.register(registerDTO);
         Assertions.assertEquals(2, userRepository.count());
     }
+
+    @Test
+
 }
